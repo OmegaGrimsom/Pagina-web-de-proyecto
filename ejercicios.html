@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ejercicios Interactivos</title>
+  <style>
+    body { font-family: Arial; background: #fdfdfd; padding: 20px; }
+    nav {
+      background: #007bff;
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    textarea { width: 100%; height: 100px; margin-bottom: 10px; }
+    button { padding: 8px 12px; background: #007bff; color: white; border: none; border-radius: 4px; }
+    section { background: #f0f8ff; padding: 15px; border-radius: 8px; margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="teoria.html">Teoría</a>
+    <a href="lenguajes.html">Lenguajes</a>
+    <a href="ejercicios.html">Ejercicios</a>
+    <a href="retos.html">Retos</a>
+    <a href="progreso.html">Progreso</a>
+  </nav>
+
+  <h1>Ejercicios Interactivos</h1>
+
+  <section>
+    <h2>1. Suma dos números</h2>
+    <textarea id="ejercicio1">// Escribe un código que sume 5 + 3</textarea>
+    <button onclick="ejecutarEjercicio1()">Probar</button>
+    <p id="resultado1"></p>
+  </section>
+
+  <section>
+    <h2>2. Saludo personalizado</h2>
+    <textarea id="ejercicio2">// Imprime "Hola, Juan"</textarea>
+    <button onclick="ejecutarEjercicio2()">Probar</button>
+    <p id="resultado2"></p>
+  </section>
+
+  <section>
+    <h2>3. Multiplicación</h2>
+    <textarea id="ejercicio3">// Multiplica 7 por 4</textarea>
+    <button onclick="ejecutarEjercicio3()">Probar</button>
+    <p id="resultado3"></p>
+  </section>
+
+  <section>
+    <h2>4. Salto de línea</h2>
+    <textarea id="ejercicio4">// Usa \n para mostrar dos líneas</textarea>
+    <button onclick="ejecutarEjercicio4()">Probar</button>
+    <p id="resultado4"></p>
+  </section>
+
+  <section>
+    <h2>5. Número par o impar</h2>
+    <textarea id="ejercicio5">// Verifica si un número es par o impar</textarea>
+    <button onclick="ejecutarEjercicio5()">Probar</button>
+    <p id="resultado5"></p>
+  </section>
+
+  <script>
+    function ejecutar(idInput, idResultado) {
+      const codigo = document.getElementById(idInput).value;
+      try {
+        const resultado = eval(codigo);
+        document.getElementById(idResultado).textContent = "Resultado: " + resultado;
+      } catch (e) {
+        document.getElementById(idResultado).textContent = "Error: " + e.message;
+      }
+    }
+
+    function ejecutarEjercicio1() { ejecutar("ejercicio1", "resultado1"); }
+    function ejecutarEjercicio2() { ejecutar("ejercicio2", "resultado2"); }
+    function ejecutarEjercicio3() { ejecutar("ejercicio3", "resultado3"); }
+    function ejecutarEjercicio4() { ejecutar("ejercicio4", "resultado4"); }
+    function ejecutarEjercicio5() { ejecutar("ejercicio5", "resultado5"); }
+  </script>
+
+</body>
+</html>

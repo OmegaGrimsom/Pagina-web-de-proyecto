@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tutoriales de JavaScript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff9f0;
+      color: #333;
+      padding: 20px;
+    }
+    nav {
+      background-color: #ff9800;
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    h1 {
+      color: #ff9800;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    textarea {
+      width: 100%;
+      font-family: monospace;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    button {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #e68900;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="teoria.html">Teoría</a>
+    <a href="lenguajes.html">Lenguajes</a>
+    <a href="ejercicios.html">Ejercicios</a>
+    <a href="retos.html">Retos</a>
+    <a href="progreso.html">Progreso</a>
+    <a href="tutoriales.html">Tutoriales</a>
+  </nav>
+
+  <h1>Tutoriales de JavaScript</h1>
+
+  <section>
+    <h2>🟡 Tutorial 1: ¿Qué es JavaScript?</h2>
+    <p>JavaScript es un lenguaje de programación que permite dar interactividad a las páginas web. Se ejecuta en el navegador.</p>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 2: Mostrar texto en consola</h2>
+    <p>Usamos <code>console.log()</code> para mostrar mensajes en la consola.</p>
+    <pre><code>
+console.log("Hola mundo");
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 3: Variables</h2>
+    <p>Las variables almacenan información. Se pueden crear con <code>let</code> o <code>const</code>.</p>
+    <pre><code>
+let edad = 15;
+const nombre = "Ana";
+console.log(nombre + " tiene " + edad + " años.");
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 4: Condicionales</h2>
+    <p>Sirven para tomar decisiones en el código.</p>
+    <pre><code>
+let nota = 8;
+if (nota >= 6) {
+  console.log("Aprobado");
+} else {
+  console.log("Reprobado");
+}
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 5: Bucles</h2>
+    <p>Permiten repetir acciones varias veces. Ejemplo con <code>for</code>:</p>
+    <pre><code>
+for (let i = 0; i < 5; i++) {
+  console.log("Repetición número " + i);
+}
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 6: Arreglos</h2>
+    <p>Un arreglo guarda varios valores juntos.</p>
+    <pre><code>
+let frutas = ["Manzana", "Banana", "Uva"];
+console.log(frutas[0]); // Manzana
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 7: Funciones</h2>
+    <p>Las funciones nos permiten agrupar código para reutilizarlo.</p>
+    <pre><code>
+function saludar(nombre) {
+  console.log("Hola " + nombre);
+}
+saludar("Carlos");
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 8: Eventos</h2>
+    <p>Con JavaScript podemos reaccionar a cosas que pasan en la página, como hacer clic.</p>
+    <pre><code>
+// HTML: <button onclick="saludar()">Haz clic</button>
+function saludar() {
+  alert("Hola desde un botón");
+}
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 9: Operadores</h2>
+    <p>Permiten realizar operaciones matemáticas o comparaciones.</p>
+    <pre><code>
+let suma = 4 + 2;
+let resta = 5 - 3;
+let comparacion = 10 > 5;
+console.log(suma);
+console.log(resta);
+console.log(comparacion);
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 10: Funciones flecha</h2>
+    <p>Una forma más corta de escribir funciones.</p>
+    <pre><code>
+const saludar = nombre => {
+  console.log("Hola " + nombre);
+};
+saludar("Ana");
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🟡 Tutorial 11: Manipular el DOM</h2>
+    <p>Podemos cambiar elementos de la página con JavaScript.</p>
+    <pre><code>
+// HTML: <p id="mensaje">Hola</p>
+document.getElementById("mensaje").textContent = "Nuevo mensaje";
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>🧪 Prueba tu propio código</h2>
+    <p>Escribe código y pruébalo directamente aquí:</p>
+    <textarea id="codigoUsuario" rows="8"></textarea><br><br>
+    <button onclick="ejecutarCodigo()">Ejecutar código</button>
+    <h3>Resultado:</h3>
+    <pre id="resultado"></pre>
+  </section>
+
+  <script>
+    function ejecutarCodigo() {
+      const codigo = document.getElementById("codigoUsuario").value;
+      const resultado = document.getElementById("resultado");
+      try {
+        const originalLog = console.log;
+        let salida = "";
+        console.log = function(mensaje) {
+          salida += mensaje + "\\n";
+        }
+        eval(codigo);
+        resultado.textContent = salida;
+        console.log = originalLog;
+      } catch (error) {
+        resultado.textContent = "Error: " + error;
+      }
+    }
+  </script>
+
+</body>
+</html>

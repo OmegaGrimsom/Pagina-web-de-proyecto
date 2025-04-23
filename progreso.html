@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Progreso del Alumno</title>
+  <style>
+    body { font-family: Arial; background: #f5f5f5; padding: 20px; }
+    nav {
+      background: #007bff;
+      padding: 10px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    h1 { color: #007bff; }
+    section {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .barra {
+      width: 100%;
+      background: #eee;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .progreso {
+      height: 20px;
+      background: #28a745;
+      width: 0%;
+      transition: width 0.5s;
+    }
+    .resumen {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="teoria.html">Teoría</a>
+    <a href="lenguajes.html">Lenguajes</a>
+    <a href="ejercicios.html">Ejercicios</a>
+    <a href="retos.html">Retos</a>
+    <a href="progreso.html">Progreso</a>
+  </nav>
+
+  <h1>Tu Progreso</h1>
+
+  <section>
+    <h2>Resumen General</h2>
+    <p>¡Bienvenido! Aquí puedes ver cuánto has avanzado con los ejercicios y retos.</p>
+    <div class="barra">
+      <div class="progreso" id="barraProgreso"></div>
+    </div>
+    <div class="resumen" id="resumenTexto">Cargando...</div>
+  </section>
+
+  <script>
+    function calcularProgreso() {
+      const total = 8; // total de ejercicios + retos
+      let completados = 0;
+
+      for (let i = 1; i <= total; i++) {
+        if (localStorage.getItem('actividad' + i) === 'completo') {
+          completados++;
+        }
+      }
+
+      const porcentaje = Math.round((completados / total) * 100);
+      document.getElementById("barraProgreso").style.width = porcentaje + "%";
+      document.getElementById("resumenTexto").textContent = 
+        `Has completado ${completados} de ${total} actividades (${porcentaje}%)`;
+    }
+
+    calcularProgreso();
+  </script>
+
+</body>
+</html>
