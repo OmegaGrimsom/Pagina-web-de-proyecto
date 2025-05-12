@@ -1,74 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Teoría - Aprende a Programar</title>
-  <style>
-    body { font-family: Arial; padding: 20px; background: #f4f4f4; color: #333; }
-    nav {
-      background: #007bff;
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    h1 { color: #007bff; }
-    section { margin-bottom: 40px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-    pre { background: #efefef; padding: 10px; border-radius: 5px; }
-    code { color: #c7254e; }
-  </style>
+  <meta charset="UTF-8">
+  <title>Teoría - Aprende Programación</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="teoria.html">Teoría</a>
-    <a href="lenguajes.html">Lenguajes</a>
-    <a href="ejercicios.html">Ejercicios</a>
-    <a href="retos.html">Retos</a>
-    <a href="progreso.html">Progreso</a>
-  </nav>
+  <header class="encabezado">
+    <h1>📘 Teoría</h1>
+    <nav class="navegacion">
+      <a href="index.html">Inicio</a>
+      <a href="teoria.html">Teoría</a>
+      <a href="lenguajes.html">Lenguajes</a>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="retos.html">Retos</a>
+      <a href="progreso.html">Progreso</a>
+      <a href="tutoriales.html">Tutoriales</a>
+    </nav>
+  </header>
 
-  <h1>Sección de Teoría</h1>
+  <main class="contenido-principal">
+    <section class="tarjeta">
+      <h2>🔤 Variables</h2>
+      <p>Una variable es como una caja donde guardamos un valor. Por ejemplo:</p>
+      <pre><code>let nombre = "Ana";</code></pre>
+      <p>En este ejemplo, estamos guardando el texto "Ana" en la variable llamada <code>nombre</code>.</p>
+    </section>
 
-  <section>
-    <h2>¿Qué es la programación?</h2>
-    <p>La programación es el proceso de escribir instrucciones que una computadora puede entender para realizar tareas.</p>
-  </section>
-
-  <section>
-    <h2>Variables</h2>
-    <p>Las variables son espacios donde podemos guardar información como números, texto, etc.</p>
-    <pre><code>let nombre = "Ana";</code></pre>
-  </section>
-
-  <section>
-    <h2>Condicionales</h2>
-    <p>Las condicionales permiten que un programa tome decisiones basadas en condiciones.</p>
-    <pre><code>let edad = 16;
-if (edad >= 18) {
-  console.log("Eres mayor de edad");
+    <section class="tarjeta">
+      <h2>✅ Condicionales</h2>
+      <p>Sirven para tomar decisiones en tu código. Por ejemplo:</p>
+      <pre><code>if (edad >= 18) {
+  alert("Eres mayor de edad");
 } else {
-  console.log("Eres menor de edad");
+  alert("Eres menor de edad");
 }</code></pre>
-  </section>
+    </section>
 
-  <section>
-    <h2>Bucles</h2>
-    <p>Los bucles sirven para repetir una acción varias veces. Por ejemplo:</p>
-    <pre><code>for (let i = 1; i <= 5; i++) {
-  console.log("Número: " + i);
+    <section class="tarjeta">
+      <h2>🔁 Bucles</h2>
+      <p>Los bucles repiten instrucciones. Por ejemplo, un bucle <code>for</code>:</p>
+      <pre><code>for (let i = 1; i <= 5; i++) {
+  console.log("Repetición " + i);
 }</code></pre>
-  </section>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🧠 Funciones</h2>
+      <p>Una función es un bloque de código que se puede usar varias veces:</p>
+      <pre><code>function saludar() {
+  alert("Hola, bienvenido");
+}
+saludar();</code></pre>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
+  </footer>
 
 </body>
 </html>
