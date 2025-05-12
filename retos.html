@@ -2,84 +2,78 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Retos de Programación</title>
-  <style>
-    body { font-family: Arial; background: #f9f9f9; padding: 20px; }
-    nav {
-      background: #007bff;
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    h1 { color: #007bff; }
-    section {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    button {
-      margin-top: 10px;
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  </style>
+  <title>Retos - Aprende Programación</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="teoria.html">Teoría</a>
-    <a href="lenguajes.html">Lenguajes</a>
-    <a href="ejercicios.html">Ejercicios</a>
-    <a href="retos.html">Retos</a>
-    <a href="progreso.html">Progreso</a>
-  </nav>
+  <header class="encabezado">
+    <h1>🚀 Retos</h1>
+    <nav class="navegacion">
+      <a href="index.html">Inicio</a>
+      <a href="teoria.html">Teoría</a>
+      <a href="lenguajes.html">Lenguajes</a>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="retos.html">Retos</a>
+      <a href="progreso.html">Progreso</a>
+      <a href="tutoriales.html">Tutoriales</a>
+    </nav>
+  </header>
 
-  <h1>Retos de Programación</h1>
+  <main class="contenido-principal">
 
-  <section>
-    <h2>Reto 1: Tabla de multiplicar</h2>
-    <p>Imprime la tabla del 6 del 1 al 10.</p>
-    <button onclick="completar(5)">Marcar como completado</button>
-  </section>
+    <section class="tarjeta">
+      <h2>🏁 Reto 1: Calculadora de edad</h2>
+      <p>Pide el año de nacimiento al usuario y calcula su edad actual.</p>
+      <button onclick="mostrarAyuda(1)">¿Necesitas ayuda?</button>
+      <div id="ayuda1" class="ayuda"></div>
+    </section>
 
-  <section>
-    <h2>Reto 2: Contador de vocales</h2>
-    <p>Crea un código que cuente cuántas vocales hay en una frase.</p>
-    <button onclick="completar(6)">Marcar como completado</button>
-  </section>
+    <section class="tarjeta">
+      <h2>🏁 Reto 2: Tabla de multiplicar</h2>
+      <p>Pide un número al usuario y muestra su tabla del 1 al 10 en la consola.</p>
+      <button onclick="mostrarAyuda(2)">¿Necesitas ayuda?</button>
+      <div id="ayuda2" class="ayuda"></div>
+    </section>
 
-  <section>
-    <h2>Reto 3: Adivina el número</h2>
-    <p>Juego donde el usuario adivina un número aleatorio entre 1 y 10.</p>
-    <button onclick="completar(7)">Marcar como completado</button>
-  </section>
+    <section class="tarjeta">
+      <h2>🏁 Reto 3: Números pares</h2>
+      <p>Muestra todos los números pares del 1 al 20.</p>
+      <button onclick="mostrarAyuda(3)">¿Necesitas ayuda?</button>
+      <div id="ayuda3" class="ayuda"></div>
+    </section>
 
-  <section>
-    <h2>Reto 4: Palíndromo</h2>
-    <p>Detecta si una palabra o frase es palíndroma.</p>
-    <button onclick="completar(8)">Marcar como completado</button>
-  </section>
+    <section class="tarjeta">
+      <h2>🏁 Reto 4: Comparador de nombres</h2>
+      <p>Pide dos nombres y muestra si son iguales o diferentes.</p>
+      <button onclick="mostrarAyuda(4)">¿Necesitas ayuda?</button>
+      <div id="ayuda4" class="ayuda"></div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🏁 Reto 5: Saludo personalizado</h2>
+      <p>Pide nombre y edad, y muestra un mensaje distinto según si es mayor o menor de edad.</p>
+      <button onclick="mostrarAyuda(5)">¿Necesitas ayuda?</button>
+      <div id="ayuda5" class="ayuda"></div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
+  </footer>
 
   <script>
-    function completar(num) {
-      localStorage.setItem("actividad" + num, "completo");
-      alert("¡Reto " + (num - 4) + " completado!");
+    function mostrarAyuda(reto) {
+      const ayudas = {
+        1: '💡 Usa: <code>let nacimiento = prompt("Año de nacimiento"); let edad = 2025 - nacimiento;</code>',
+        2: '💡 Usa un bucle: <code>for (let i = 1; i <= 10; i++) { console.log(num * i); }</code>',
+        3: '💡 Usa condicional: <code>if (i % 2 === 0)</code> dentro de un bucle',
+        4: '💡 Usa: <code>if (nombre1 === nombre2)</code> para comparar',
+        5: '💡 Combina <code>prompt</code>, <code>if</code> y <code>alert</code>'
+      };
+      document.getElementById("ayuda" + reto).innerHTML = ayudas[reto];
     }
   </script>
 
