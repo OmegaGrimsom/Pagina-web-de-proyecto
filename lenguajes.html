@@ -2,71 +2,57 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Lenguajes de Programación</title>
-  <style>
-    body { font-family: Arial; background: #fdfdfd; padding: 20px; }
-    nav {
-      background: #007bff;
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    h1 { color: #007bff; }
-    section {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    pre { background: #efefef; padding: 10px; border-radius: 4px; }
-  </style>
+  <title>Lenguajes - Aprende Programación</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="teoria.html">Teoría</a>
-    <a href="lenguajes.html">Lenguajes</a>
-    <a href="ejercicios.html">Ejercicios</a>
-    <a href="retos.html">Retos</a>
-    <a href="progreso.html">Progreso</a>
-  </nav>
+  <header class="encabezado">
+    <h1>🌐 Lenguajes Web</h1>
+    <nav class="navegacion">
+      <a href="index.html">Inicio</a>
+      <a href="teoria.html">Teoría</a>
+      <a href="lenguajes.html">Lenguajes</a>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="retos.html">Retos</a>
+      <a href="progreso.html">Progreso</a>
+      <a href="tutoriales.html">Tutoriales</a>
+    </nav>
+  </header>
 
-  <h1>Lenguajes de Programación</h1>
+  <main class="contenido-principal">
 
-  <section>
-    <h2>JavaScript</h2>
-    <p>Es un lenguaje muy usado para crear páginas web interactivas.</p>
-    <pre>console.log("Hola mundo");</pre>
-  </section>
+    <section class="tarjeta">
+      <h2>📄 HTML (Estructura)</h2>
+      <p>HTML se usa para crear la estructura de una página web.</p>
+      <pre><code>&lt;h1&gt;Hola Mundo&lt;/h1&gt;
+&lt;p&gt;Bienvenido a mi sitio web&lt;/p&gt;</code></pre>
+    </section>
 
-  <section>
-    <h2>Python</h2>
-    <p>Muy popular por su facilidad de uso y sintaxis clara.</p>
-    <pre>print("Hola mundo")</pre>
-  </section>
+    <section class="tarjeta">
+      <h2>🎨 CSS (Estilos)</h2>
+      <p>CSS se usa para dar color, forma y estilo al contenido de HTML.</p>
+      <pre><code>h1 {
+  color: blue;
+  font-size: 30px;
+}</code></pre>
+    </section>
 
-  <section>
-    <h2>HTML</h2>
-    <p>No es un lenguaje de programación como tal, pero es fundamental para estructurar páginas web.</p>
-    <pre>&lt;h1&gt;Hola mundo&lt;/h1&gt;</pre>
-  </section>
+    <section class="tarjeta">
+      <h2>⚙️ JavaScript (Interactividad)</h2>
+      <p>JavaScript se usa para agregar acciones y comportamientos dinámicos.</p>
+      <pre><code>function saludar() {
+  alert("Hola, programador!");
+}</code></pre>
+    </section>
 
-  <section>
-    <h2>CSS</h2>
-    <p>Se usa para darle estilo a las páginas web. No es programación, pero es esencial.</p>
-    <pre>h1 { color: red; }</pre>
-  </section>
+  </main>
+
+  <footer class="pie">
+    <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
+  </footer>
 
 </body>
 </html>
+
