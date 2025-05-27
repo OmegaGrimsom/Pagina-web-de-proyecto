@@ -24,14 +24,14 @@
   <main class="contenido-principal">
     <section class="tarjeta">
       <h2>🔤 Variables</h2>
-      <p>Una variable es como una caja donde guardamos un valor. Por ejemplo:</p>
+      <p>Una variable es como una caja donde guardas algo para usarlo después.</p>
       <pre><code>let nombre = "Ana";</code></pre>
-      <p>En este ejemplo, estamos guardando el texto "Ana" en la variable llamada <code>nombre</code>.</p>
+      <p>Guarda el texto <code>"Ana"</code> en la variable <code>nombre</code>.</p>
     </section>
 
     <section class="tarjeta">
       <h2>✅ Condicionales</h2>
-      <p>Sirven para tomar decisiones en tu código. Por ejemplo:</p>
+      <p>Sirven para que el programa tome decisiones. Por ejemplo:</p>
       <pre><code>if (edad >= 18) {
   alert("Eres mayor de edad");
 } else {
@@ -41,19 +41,86 @@
 
     <section class="tarjeta">
       <h2>🔁 Bucles</h2>
-      <p>Los bucles repiten instrucciones. Por ejemplo, un bucle <code>for</code>:</p>
+      <p>Los bucles repiten instrucciones. Este ejemplo muestra números del 1 al 5:</p>
       <pre><code>for (let i = 1; i <= 5; i++) {
-  console.log("Repetición " + i);
+  console.log("Número " + i);
 }</code></pre>
     </section>
 
     <section class="tarjeta">
       <h2>🧠 Funciones</h2>
-      <p>Una función es un bloque de código que se puede usar varias veces:</p>
+      <p>Una función guarda acciones que puedes usar muchas veces:</p>
       <pre><code>function saludar() {
-  alert("Hola, bienvenido");
+  alert("¡Hola!");
 }
 saludar();</code></pre>
+    </section>
+
+    <section class="tarjeta">
+      <h2>📦 Arreglos</h2>
+      <p>Un arreglo guarda varios datos en una sola variable:</p>
+      <pre><code>let frutas = ["manzana", "banana", "uva"];
+console.log(frutas[1]); // banana</code></pre>
+      <p>Los arreglos comienzan en la posición 0.</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🧱 Objetos</h2>
+      <p>Un objeto guarda datos relacionados en una sola estructura:</p>
+      <pre><code>let persona = {
+  nombre: "Luis",
+  edad: 14,
+  estudiante: true
+};
+console.log(persona.nombre);</code></pre>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🖱️ Eventos</h2>
+      <p>Los eventos permiten que el usuario interactúe con la página:</p>
+      <pre><code>document.getElementById("boton").addEventListener("click", function() {
+  alert("¡Diste clic!");
+});</code></pre>
+      <p>Esto muestra un mensaje cuando haces clic en un botón con id <code>boton</code>.</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🌐 Manipulación del DOM</h2>
+      <p>El DOM es todo el contenido HTML. Puedes cambiarlo con JavaScript:</p>
+      <pre><code>document.getElementById("titulo").textContent = "Nuevo título";</code></pre>
+      <p>Este código cambia el texto de un elemento con id <code>titulo</code>.</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🧩 Funciones Flecha</h2>
+      <p>Una forma más corta de escribir funciones:</p>
+      <pre><code>const saludar = () => {
+  console.log("Hola mundo");
+};</code></pre>
+    </section>
+
+    <section class="tarjeta">
+      <h2>⚙️ Métodos Útiles</h2>
+      <p>Algunos métodos que puedes usar con arreglos:</p>
+      <pre><code>let numeros = [1, 2, 3, 4];
+numeros.push(5); // Agrega 5 al final
+numeros.pop();   // Elimina el último número</code></pre>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🧪 typeof</h2>
+      <p>Sirve para saber qué tipo de dato tiene una variable:</p>
+      <pre><code>let edad = 12;
+console.log(typeof edad); // "number"</code></pre>
+    </section>
+
+    <section class="tarjeta">
+      <h2>💬 Comentarios</h2>
+      <p>Los comentarios no se ejecutan. Son para ti o tus compañeros:</p>
+      <pre><code>// Esto es un comentario de una línea
+
+/* Esto es un 
+   comentario de varias líneas */</code></pre>
     </section>
   </main>
 
