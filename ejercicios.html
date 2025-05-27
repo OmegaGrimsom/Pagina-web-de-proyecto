@@ -28,6 +28,8 @@
       <p>Crea una variable llamada <code>nombre</code> y asígnale tu nombre.</p>
       <button onclick="mostrarAyuda(1)">¿Necesitas ayuda?</button>
       <div id="ayuda1" class="ayuda"></div>
+      <textarea id="codigo1" placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="ejecutarCodigo(1)">Probar código</button>
     </section>
 
     <section class="tarjeta">
@@ -35,6 +37,8 @@
       <p>Usa una estructura <code>if</code> para mostrar un mensaje si una persona tiene 18 años o más.</p>
       <button onclick="mostrarAyuda(2)">¿Necesitas ayuda?</button>
       <div id="ayuda2" class="ayuda"></div>
+      <textarea id="codigo2" placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="ejecutarCodigo(2)">Probar código</button>
     </section>
 
     <section class="tarjeta">
@@ -42,6 +46,8 @@
       <p>Haz un bucle que imprima los números del 1 al 5 en la consola.</p>
       <button onclick="mostrarAyuda(3)">¿Necesitas ayuda?</button>
       <div id="ayuda3" class="ayuda"></div>
+      <textarea id="codigo3" placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="ejecutarCodigo(3)">Probar código</button>
     </section>
 
     <section class="tarjeta">
@@ -49,6 +55,8 @@
       <p>Crea una función llamada <code>saludar</code> que muestre un mensaje como "¡Hola desde la función!".</p>
       <button onclick="mostrarAyuda(4)">¿Necesitas ayuda?</button>
       <div id="ayuda4" class="ayuda"></div>
+      <textarea id="codigo4" placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="ejecutarCodigo(4)">Probar código</button>
     </section>
 
     <section class="tarjeta">
@@ -56,6 +64,8 @@
       <p>Pide al usuario su edad con <code>prompt</code> y muestra un mensaje con <code>alert</code>.</p>
       <button onclick="mostrarAyuda(5)">¿Necesitas ayuda?</button>
       <div id="ayuda5" class="ayuda"></div>
+      <textarea id="codigo5" placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="ejecutarCodigo(5)">Probar código</button>
     </section>
 
   </main>
@@ -75,8 +85,16 @@
       };
       document.getElementById("ayuda" + ejercicio).innerHTML = ayudas[ejercicio];
     }
+
+    function ejecutarCodigo(numero) {
+      const codigo = document.getElementById("codigo" + numero).value;
+      try {
+        new Function(codigo)();
+      } catch (error) {
+        alert("⚠️ Error en tu código: " + error.message);
+      }
+    }
   </script>
 
 </body>
 </html>
-
