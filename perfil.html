@@ -25,12 +25,25 @@
   <main class="contenido-principal">
     <section class="tarjeta">
       <h2>📄 Información del usuario</h2>
-      <p><strong>Nombre de usuario:</strong> <span id="nombreUsuario"></span></p>
-      <p><strong>Contraseña:</strong> <span id="contrasenaUsuario">********</span></p>
+      <p><strong>Nombre actual:</strong> <span id="nombreUsuario"></span></p>
+      <p><strong>Contraseña actual:</strong> <span id="contrasenaUsuario">********</span></p>
     </section>
 
     <section class="tarjeta">
-      <h2>⚙️ Opciones</h2>
+      <h2>✏️ Cambiar nombre y/o contraseña</h2>
+      <form id="formCambios" onsubmit="guardarCambios(event)">
+        <label for="nuevoNombre">Nuevo nombre de usuario:</label><br>
+        <input type="text" id="nuevoNombre" placeholder="Nuevo nombre"><br><br>
+
+        <label for="nuevaContrasena">Nueva contraseña:</label><br>
+        <input type="password" id="nuevaContrasena" placeholder="Nueva contraseña"><br><br>
+
+        <button type="submit">Guardar cambios</button>
+      </form>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🚪 Cerrar sesión</h2>
       <button onclick="cerrarSesion()">Cerrar sesión</button>
     </section>
   </main>
@@ -40,16 +53,60 @@
   </footer>
 
   <script>
-    const usuario = localStorage.getItem("usuarioActual");
-    if (!usuario) {
+    let usuarioActual = localStorage.getItem("usuarioActual");
+    if (!usuarioActual) {
       window.location.href = "login.html";
-    } else {
-      document.getElementById("nombreUsuario").textContent = usuario;
-      const datos = JSON.parse(localStorage.getItem("usuario_" + usuario));
-      if (datos && datos.password) {
-        const oculto = "*".repeat(datos.password.length);
-        document.getElementById("contrasenaUsuario").textContent = oculto;
+    }
+
+    const datos = JSON.parse(localStorage.getItem("usuario_" + usuarioActual)) || {};
+    document.getElementById("nombreUsuario").textContent = usuarioActual;
+    document.getElementById("contrasenaUsuario").textContent = "*".repeat((datos.password || "").length);
+
+    function guardarCambios(event) {
+      event.preventDefault();
+
+      const nuevoNombre = document.getElementById("nuevoNombre").value.trim();
+      const nuevaContrasena = document.getElementById("nuevaContrasena").value;
+
+      if (!nuevoNombre && !nuevaContrasena) {
+        alert("Debes ingresar al menos un nuevo nombre o contraseña.");
+        return;
       }
+
+      // Validar nombre disponible si se cambia
+      if (nuevoNombre && nuevoNombre !== usuarioActual && localStorage.getItem("usuario_" + nuevoNombre)) {
+        alert("Ese nombre de usuario ya está en uso.");
+        return;
+      }
+
+      // Guardar nueva contraseña si se cambia
+      if (nuevaContrasena) {
+        datos.password = nuevaContrasena;
+      }
+
+      // Cambiar nombre si se proporciona
+      if (nuevoNombre && nuevoNombre !== usuarioActual) {
+        localStorage.setItem("usuario_" + nuevoNombre, JSON.stringify(datos));
+        localStorage.removeItem("usuario_" + usuarioActual);
+
+        // Transferir progreso
+        for (let clave in localStorage) {
+          if (clave.startsWith(usuarioActual + "_")) {
+            const nuevoClave = clave.replace(usuarioActual + "_", nuevoNombre + "_");
+            localStorage.setItem(nuevoClave, localStorage.getItem(clave));
+            localStorage.removeItem(clave);
+          }
+        }
+
+        usuarioActual = nuevoNombre;
+        localStorage.setItem("usuarioActual", nuevoNombre);
+        alert("Nombre de usuario actualizado.");
+      } else {
+        localStorage.setItem("usuario_" + usuarioActual, JSON.stringify(datos));
+        alert("Contraseña actualizada.");
+      }
+
+      location.reload();
     }
 
     function cerrarSesion() {
