@@ -5,6 +5,42 @@
   <title>Ejercicios - Aprende Programación</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      font-family: monospace;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 8px;
+      resize: vertical;
+    }
+
+    .ayuda {
+      margin-top: 10px;
+      color: #333;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-left: 4px solid #2196F3;
+      display: none;
+    }
+
+    .boton-ejecutar {
+      margin-top: 8px;
+      padding: 6px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .boton-ejecutar:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
 
@@ -23,49 +59,54 @@
 
   <main class="contenido-principal">
 
+    <!-- Ejercicio 1 -->
     <section class="tarjeta">
       <h2>✍️ Ejercicio 1: Variables</h2>
       <p>Crea una variable llamada <code>nombre</code> y asígnale tu nombre.</p>
       <button onclick="mostrarAyuda(1)">¿Necesitas ayuda?</button>
-      <div id="ayuda1" class="ayuda"></div>
+      <div id="ayuda1" class="ayuda">💡 Usa: <code>let nombre = "TuNombre";</code></div>
       <textarea id="codigo1" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="ejecutarCodigo(1)">Probar código</button>
+      <button class="boton-ejecutar" onclick="ejecutarCodigo(1)">Probar código</button>
     </section>
 
+    <!-- Ejercicio 2 -->
     <section class="tarjeta">
       <h2>✍️ Ejercicio 2: Condicional</h2>
       <p>Usa una estructura <code>if</code> para mostrar un mensaje si una persona tiene 18 años o más.</p>
       <button onclick="mostrarAyuda(2)">¿Necesitas ayuda?</button>
-      <div id="ayuda2" class="ayuda"></div>
+      <div id="ayuda2" class="ayuda">💡 Usa: <code>let edad = 18;<br>if (edad >= 18) { alert("Mayor de edad"); }</code></div>
       <textarea id="codigo2" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="ejecutarCodigo(2)">Probar código</button>
+      <button class="boton-ejecutar" onclick="ejecutarCodigo(2)">Probar código</button>
     </section>
 
+    <!-- Ejercicio 3 -->
     <section class="tarjeta">
       <h2>✍️ Ejercicio 3: Bucle</h2>
       <p>Haz un bucle que imprima los números del 1 al 5 en la consola.</p>
       <button onclick="mostrarAyuda(3)">¿Necesitas ayuda?</button>
-      <div id="ayuda3" class="ayuda"></div>
+      <div id="ayuda3" class="ayuda">💡 Usa: <code>for (let i = 1; i <= 5; i++) { console.log(i); }</code></div>
       <textarea id="codigo3" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="ejecutarCodigo(3)">Probar código</button>
+      <button class="boton-ejecutar" onclick="ejecutarCodigo(3)">Probar código</button>
     </section>
 
+    <!-- Ejercicio 4 -->
     <section class="tarjeta">
       <h2>✍️ Ejercicio 4: Función</h2>
       <p>Crea una función llamada <code>saludar</code> que muestre un mensaje como "¡Hola desde la función!".</p>
       <button onclick="mostrarAyuda(4)">¿Necesitas ayuda?</button>
-      <div id="ayuda4" class="ayuda"></div>
+      <div id="ayuda4" class="ayuda">💡 Usa: <code>function saludar() { alert("¡Hola desde la función!"); }<br>saludar();</code></div>
       <textarea id="codigo4" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="ejecutarCodigo(4)">Probar código</button>
+      <button class="boton-ejecutar" onclick="ejecutarCodigo(4)">Probar código</button>
     </section>
 
+    <!-- Ejercicio 5 -->
     <section class="tarjeta">
       <h2>✍️ Ejercicio 5: Interacción con usuario</h2>
       <p>Pide al usuario su edad con <code>prompt</code> y muestra un mensaje con <code>alert</code>.</p>
       <button onclick="mostrarAyuda(5)">¿Necesitas ayuda?</button>
-      <div id="ayuda5" class="ayuda"></div>
+      <div id="ayuda5" class="ayuda">💡 Usa: <code>let edad = prompt("¿Tu edad?"); alert("Tienes " + edad + " años");</code></div>
       <textarea id="codigo5" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="ejecutarCodigo(5)">Probar código</button>
+      <button class="boton-ejecutar" onclick="ejecutarCodigo(5)">Probar código</button>
     </section>
 
   </main>
@@ -76,20 +117,14 @@
 
   <script>
     function mostrarAyuda(ejercicio) {
-      const ayudas = {
-        1: '💡 Usa: <code>let nombre = "TuNombre";</code>',
-        2: '💡 Usa: <code>if (edad >= 18) { alert("Mayor de edad"); }</code>',
-        3: '💡 Usa: <code>for (let i = 1; i <= 5; i++) { console.log(i); }</code>',
-        4: '💡 Usa: <code>function saludar() { alert("¡Hola!"); }</code>',
-        5: '💡 Usa: <code>let edad = prompt("¿Tu edad?"); alert("Tienes " + edad + " años");</code>'
-      };
-      document.getElementById("ayuda" + ejercicio).innerHTML = ayudas[ejercicio];
+      const ayuda = document.getElementById("ayuda" + ejercicio);
+      ayuda.style.display = ayuda.style.display === "block" ? "none" : "block";
     }
 
     function ejecutarCodigo(numero) {
       const codigo = document.getElementById("codigo" + numero).value;
       try {
-        new Function(codigo)();
+        new Function(codigo)(); // Ejecuta el código del textarea
       } catch (error) {
         alert("⚠️ Error en tu código: " + error.message);
       }
