@@ -45,10 +45,18 @@
   </footer>
 
   <script>
+    // Verificar sesión
+    const usuario = localStorage.getItem("usuarioActivo");
+    if (!usuario) {
+      alert("🔒 Debes iniciar sesión para ver tu progreso.");
+      location.href = "login.html";
+    }
+
     function obtenerProgreso(clave, total) {
       let completados = 0;
       for (let i = 1; i <= total; i++) {
-        if (localStorage.getItem(`${clave}${i}`) === "true") {
+        const estado = localStorage.getItem(`${usuario}_${clave}${i}`);
+        if (estado === "true") {
           completados++;
         }
       }
