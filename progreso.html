@@ -18,7 +18,12 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
+      <a href="perfil.html">Perfil</a>
     </nav>
+    <div class="usuario-sesion">
+      <span id="nombre-usuario">👤</span>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
   </header>
 
   <main class="contenido-principal">
@@ -38,6 +43,11 @@
       <p id="nivel-actual">Calculando...</p>
     </section>
 
+    <section class="tarjeta">
+      <h2>🔄 Reiniciar Progreso</h2>
+      <button onclick="reiniciarProgreso()">Reiniciar todo mi progreso</button>
+    </section>
+
   </main>
 
   <footer class="pie">
@@ -45,18 +55,17 @@
   </footer>
 
   <script>
-    // Verificar sesión
-    const usuario = localStorage.getItem("usuarioActivo");
+    const usuario = localStorage.getItem("usuarioActual");
     if (!usuario) {
-      alert("🔒 Debes iniciar sesión para ver tu progreso.");
-      location.href = "login.html";
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("nombre-usuario").textContent = `👤 ${usuario}`;
     }
 
     function obtenerProgreso(clave, total) {
       let completados = 0;
       for (let i = 1; i <= total; i++) {
-        const estado = localStorage.getItem(`${usuario}_${clave}${i}`);
-        if (estado === "true") {
+        if (localStorage.getItem(`${usuario}_${clave}${i}`) === "true") {
           completados++;
         }
       }
@@ -80,6 +89,24 @@
       if (total === 10) nivel = "¡Maestro! 🎉";
 
       document.getElementById("nivel-actual").textContent = nivel;
+    }
+
+    function reiniciarProgreso() {
+      const ejerciciosTotales = 5;
+      const retosTotales = 5;
+      for (let i = 1; i <= ejerciciosTotales; i++) {
+        localStorage.removeItem(`${usuario}_ejercicio${i}`);
+      }
+      for (let i = 1; i <= retosTotales; i++) {
+        localStorage.removeItem(`${usuario}_reto${i}`);
+      }
+      alert("✅ Tu progreso ha sido reiniciado.");
+      actualizarProgreso();
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActual");
+      window.location.href = "login.html";
     }
 
     actualizarProgreso();
