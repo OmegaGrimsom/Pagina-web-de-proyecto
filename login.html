@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Aprende Programación</title>
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    body {
+      text-align: center;
+      padding: 2rem;
+    }
+    input {
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+    .contenedor {
+      max-width: 400px;
+      margin: auto;
+      background: #f9f9f9;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h2>🔐 Inicia sesión o regístrate</h2>
+    <input type="text" id="usuario" placeholder="Nombre de usuario"><br>
+    <input type="password" id="contrasena" placeholder="Contraseña"><br>
+    <button onclick="registrar()">Registrarse</button>
+    <button onclick="iniciarSesion()">Iniciar Sesión</button>
+    <p id="mensaje"></p>
+  </div>
+
+  <script>
+    function registrar() {
+      const usuario = document.getElementById('usuario').value;
+      const contrasena = document.getElementById('contrasena').value;
+      if (!usuario || !contrasena) {
+        document.getElementById('mensaje').textContent = '⚠️ Llena ambos campos';
+        return;
+      }
+      if (localStorage.getItem(`user_${usuario}`)) {
+        document.getElementById('mensaje').textContent = '❌ Usuario ya registrado';
+        return;
+      }
+      localStorage.setItem(`user_${usuario}`, JSON.stringify({ contrasena, progreso: {} }));
+      localStorage.setItem('usuarioActivo', usuario);
+      location.href = 'index.html';
+    }
+
+    function iniciarSesion() {
+      const usuario = document.getElementById('usuario').value;
+      const contrasena = document.getElementById('contrasena').value;
+      const datos = JSON.parse(localStorage.getItem(`user_${usuario}`));
+      if (!datos || datos.contrasena !== contrasena) {
+        document.getElementById('mensaje').textContent = '❌ Usuario o contraseña incorrectos';
+        return;
+      }
+      localStorage.setItem('usuarioActivo', usuario);
+      location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
