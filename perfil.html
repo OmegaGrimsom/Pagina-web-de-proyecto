@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Perfil - Aprende Programación</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <header class="encabezado">
+    <h1>👤 Mi Perfil</h1>
+    <nav class="navegacion">
+      <a href="index.html">Inicio</a>
+      <a href="teoria.html">Teoría</a>
+      <a href="lenguajes.html">Lenguajes</a>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="retos.html">Retos</a>
+      <a href="progreso.html">Progreso</a>
+      <a href="tutoriales.html">Tutoriales</a>
+      <a href="perfil.html">Perfil</a>
+    </nav>
+  </header>
+
+  <main class="contenido-principal">
+    <section class="tarjeta">
+      <h2>📄 Información del usuario</h2>
+      <p><strong>Nombre de usuario:</strong> <span id="nombreUsuario"></span></p>
+      <p><strong>Contraseña:</strong> <span id="contrasenaUsuario">********</span></p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>⚙️ Opciones</h2>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
+  </footer>
+
+  <script>
+    const usuario = localStorage.getItem("usuarioActual");
+    if (!usuario) {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("nombreUsuario").textContent = usuario;
+      const datos = JSON.parse(localStorage.getItem("usuario_" + usuario));
+      if (datos && datos.password) {
+        const oculto = "*".repeat(datos.password.length);
+        document.getElementById("contrasenaUsuario").textContent = oculto;
+      }
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActual");
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>
