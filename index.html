@@ -18,12 +18,17 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
+      <a href="perfil.html">Perfil</a>
     </nav>
+    <div class="usuario-sesion">
+      <span id="nombre-usuario">👤</span>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
   </header>
 
   <main class="contenido-principal">
     <section class="bienvenida tarjeta">
-      <h2>🎓 Bienvenido <span id="nombreUsuario"></span></h2>
+      <h2>🎓 Bienvenido</h2>
       <p>Este sitio está hecho para ayudarte a aprender programación desde cero. Aquí encontrarás teoría, ejemplos, ejercicios, retos, y tutoriales paso a paso.</p>
     </section>
 
@@ -48,14 +53,17 @@
   </footer>
 
   <script>
-    // Verificación de usuario activo
-    const usuario = localStorage.getItem('usuarioActivo');
+    const usuario = localStorage.getItem("usuarioActual");
+
     if (!usuario) {
-      alert('🔒 Debes iniciar sesión para acceder');
-      location.href = 'login.html';
+      window.location.href = "login.html";
     } else {
-      // Mostrar nombre de usuario en la bienvenida
-      document.getElementById('nombreUsuario').textContent = usuario;
+      document.getElementById("nombre-usuario").textContent = `👤 ${usuario}`;
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActual");
+      window.location.href = "login.html";
     }
   </script>
 
