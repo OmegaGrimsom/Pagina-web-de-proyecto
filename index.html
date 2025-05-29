@@ -5,6 +5,29 @@
   <title>Inicio - Aprende Programación</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    .login-opcional {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      text-align: right;
+    }
+
+    .popup {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      background-color: white;
+      padding: 1.5rem;
+      border: 2px solid #000;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .oculto {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -18,11 +41,10 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
-      <a href="perfil.html">Perfil</a>
     </nav>
-    <div class="usuario-sesion">
-      <span id="nombre-usuario">👤</span>
-      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    <div class="login-opcional">
+      <button id="btn-login-toggle">👤 Iniciar sesión</button>
+      <span id="nombre-usuario"></span>
     </div>
   </header>
 
@@ -52,19 +74,59 @@
     <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
   </footer>
 
+  <div id="popup-login" class="popup oculto">
+    <h2>Iniciar sesión</h2>
+    <label>Nombre:<br><input type="text" id="login-nombre"></label><br>
+    <label>Contraseña:<br><input type="password" id="login-clave"></label><br>
+    <button onclick="iniciarSesion()">Entrar</button>
+    <button onclick="cerrarPopup()">Cancelar</button>
+  </div>
+
   <script>
-    const usuario = localStorage.getItem("usuarioActual");
-
-    if (!usuario) {
-      window.location.href = "login.html";
-    } else {
-      document.getElementById("nombre-usuario").textContent = `👤 ${usuario}`;
+    function mostrarPopup() {
+      document.getElementById("popup-login").classList.remove("oculto");
     }
 
-    function cerrarSesion() {
-      localStorage.removeItem("usuarioActual");
-      window.location.href = "login.html";
+    function cerrarPopup() {
+      document.getElementById("popup-login").classList.add("oculto");
     }
+
+    document.getElementById("btn-login-toggle").addEventListener("click", mostrarPopup);
+
+    function iniciarSesion() {
+      const nombre = document.getElementById("login-nombre").value;
+      const clave = document.getElementById("login-clave").value;
+
+      const nombreGuardado = localStorage.getItem("usuarioNombre");
+      const claveGuardada = localStorage.getItem("usuarioClave");
+
+      if (nombre === nombreGuardado && clave === claveGuardada) {
+        localStorage.setItem("sesionIniciada", "true");
+        localStorage.setItem("nombreSesion", nombre);
+        mostrarNombreUsuario();
+        cerrarPopup();
+      } else {
+        alert("Nombre o contraseña incorrectos.");
+      }
+    }
+
+    function mostrarNombreUsuario() {
+      const nombre = localStorage.getItem("nombreSesion");
+      const span = document.getElementById("nombre-usuario");
+      if (nombre) {
+        span.textContent = `Hola, ${nombre} 👋`;
+      } else {
+        span.textContent = "";
+      }
+    }
+
+    function revisarSesion() {
+      if (localStorage.getItem("sesionIniciada") === "true") {
+        mostrarNombreUsuario();
+      }
+    }
+
+    revisarSesion();
   </script>
 
 </body>
