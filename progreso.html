@@ -22,7 +22,7 @@
     </nav>
     <div class="usuario-sesion">
       <span id="nombre-usuario">👤</span>
-      <button onclick="cerrarSesion()">Cerrar sesión</button>
+      <button id="boton-sesion">Iniciar sesión</button>
     </div>
   </header>
 
@@ -56,16 +56,24 @@
 
   <script>
     const usuario = localStorage.getItem("usuarioActual");
-    if (!usuario) {
-      window.location.href = "login.html";
+    const nombreUsuarioSpan = document.getElementById("nombre-usuario");
+    const botonSesion = document.getElementById("boton-sesion");
+
+    if (usuario) {
+      nombreUsuarioSpan.textContent = `👤 ${usuario}`;
+      botonSesion.textContent = "Cerrar sesión";
+      botonSesion.onclick = cerrarSesion;
     } else {
-      document.getElementById("nombre-usuario").textContent = `👤 ${usuario}`;
+      nombreUsuarioSpan.textContent = "👤 Invitado";
+      botonSesion.textContent = "Iniciar sesión";
+      botonSesion.onclick = () => window.location.href = "login.html";
     }
 
     function obtenerProgreso(clave, total) {
       let completados = 0;
       for (let i = 1; i <= total; i++) {
-        if (localStorage.getItem(`${usuario}_${clave}${i}`) === "true") {
+        const claveGuardada = usuario ? `${usuario}_${clave}${i}` : `${clave}${i}`;
+        if (localStorage.getItem(claveGuardada) === "true") {
           completados++;
         }
       }
@@ -95,10 +103,12 @@
       const ejerciciosTotales = 5;
       const retosTotales = 5;
       for (let i = 1; i <= ejerciciosTotales; i++) {
-        localStorage.removeItem(`${usuario}_ejercicio${i}`);
+        const clave = usuario ? `${usuario}_ejercicio${i}` : `ejercicio${i}`;
+        localStorage.removeItem(clave);
       }
       for (let i = 1; i <= retosTotales; i++) {
-        localStorage.removeItem(`${usuario}_reto${i}`);
+        const clave = usuario ? `${usuario}_reto${i}` : `reto${i}`;
+        localStorage.removeItem(clave);
       }
       alert("✅ Tu progreso ha sido reiniciado.");
       actualizarProgreso();
@@ -106,7 +116,7 @@
 
     function cerrarSesion() {
       localStorage.removeItem("usuarioActual");
-      window.location.href = "login.html";
+      window.location.reload();
     }
 
     actualizarProgreso();
