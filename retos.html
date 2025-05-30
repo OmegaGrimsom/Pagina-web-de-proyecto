@@ -9,7 +9,7 @@
 <body>
 
   <header class="encabezado">
-    <h1>🚀 Retos</h1>
+    <h1>🏆 Retos</h1>
     <nav class="navegacion">
       <a href="index.html">Inicio</a>
       <a href="teoria.html">Teoría</a>
@@ -18,46 +18,44 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
+      <a href="perfil.html">Perfil</a>
     </nav>
+    <div class="usuario-sesion">
+      <span id="nombre-usuario">👤</span>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
   </header>
 
   <main class="contenido-principal">
-
     <section class="tarjeta">
-      <h2>🏁 Reto 1: Calculadora de edad</h2>
-      <p>Pide el año de nacimiento al usuario y calcula su edad actual.</p>
-      <button onclick="mostrarAyuda(1)">¿Necesitas ayuda?</button>
-      <div id="ayuda1" class="ayuda"></div>
+      <h2>🔍 Reto 1: Inversión de texto</h2>
+      <p>Escribe un programa que invierta el texto ingresado por el usuario.</p>
+      <button onclick="marcarReto(1)">Marcar como completado</button>
     </section>
 
     <section class="tarjeta">
-      <h2>🏁 Reto 2: Tabla de multiplicar</h2>
-      <p>Pide un número al usuario y muestra su tabla del 1 al 10 en la consola.</p>
-      <button onclick="mostrarAyuda(2)">¿Necesitas ayuda?</button>
-      <div id="ayuda2" class="ayuda"></div>
+      <h2>🧮 Reto 2: Suma de los primeros 100 números</h2>
+      <p>Escribe un programa que calcule la suma de los números del 1 al 100.</p>
+      <button onclick="marcarReto(2)">Marcar como completado</button>
     </section>
 
     <section class="tarjeta">
-      <h2>🏁 Reto 3: Números pares</h2>
-      <p>Muestra todos los números pares del 1 al 20.</p>
-      <button onclick="mostrarAyuda(3)">¿Necesitas ayuda?</button>
-      <div id="ayuda3" class="ayuda"></div>
+      <h2>🔢 Reto 3: Números primos</h2>
+      <p>Escribe una función que diga si un número es primo o no.</p>
+      <button onclick="marcarReto(3)">Marcar como completado</button>
     </section>
 
     <section class="tarjeta">
-      <h2>🏁 Reto 4: Comparador de nombres</h2>
-      <p>Pide dos nombres y muestra si son iguales o diferentes.</p>
-      <button onclick="mostrarAyuda(4)">¿Necesitas ayuda?</button>
-      <div id="ayuda4" class="ayuda"></div>
+      <h2>📦 Reto 4: Arreglo al revés</h2>
+      <p>Crea un arreglo y luego genera uno nuevo con los elementos en orden inverso.</p>
+      <button onclick="marcarReto(4)">Marcar como completado</button>
     </section>
 
     <section class="tarjeta">
-      <h2>🏁 Reto 5: Saludo personalizado</h2>
-      <p>Pide nombre y edad, y muestra un mensaje distinto según si es mayor o menor de edad.</p>
-      <button onclick="mostrarAyuda(5)">¿Necesitas ayuda?</button>
-      <div id="ayuda5" class="ayuda"></div>
+      <h2>📆 Reto 5: Edad exacta</h2>
+      <p>Pide al usuario su año de nacimiento y muestra cuántos años tiene.</p>
+      <button onclick="marcarReto(5)">Marcar como completado</button>
     </section>
-
   </main>
 
   <footer class="pie">
@@ -65,15 +63,23 @@
   </footer>
 
   <script>
-    function mostrarAyuda(reto) {
-      const ayudas = {
-        1: '💡 Usa: <code>let nacimiento = prompt("Año de nacimiento"); let edad = 2025 - nacimiento;</code>',
-        2: '💡 Usa un bucle: <code>for (let i = 1; i <= 10; i++) { console.log(num * i); }</code>',
-        3: '💡 Usa condicional: <code>if (i % 2 === 0)</code> dentro de un bucle',
-        4: '💡 Usa: <code>if (nombre1 === nombre2)</code> para comparar',
-        5: '💡 Combina <code>prompt</code>, <code>if</code> y <code>alert</code>'
-      };
-      document.getElementById("ayuda" + reto).innerHTML = ayudas[reto];
+    const usuario = localStorage.getItem("usuarioActual");
+    if (!usuario) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("nombre-usuario").textContent = `👤 ${usuario}`;
+    }
+
+    function marcarReto(numero) {
+      localStorage.setItem(`${usuario}_reto${numero}`, "true");
+      alert(`✅ ¡Reto ${numero} marcado como completado!`);
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActual");
+      localStorage.removeItem("sesionIniciada");
+      localStorage.removeItem("nombreSesion");
+      window.location.href = "index.html";
     }
   </script>
 
