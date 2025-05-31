@@ -3,15 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title>Teoría - Aprende Programación</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="estilos.css">
   <style>
-    .login-opcional {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      text-align: right;
+    body {
+      background-color: #f0f8ff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
     }
+
+    .encabezado {
+      background-color: #4a90e2;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .encabezado h1 {
+      margin: 0.5rem 0;
+    }
+
+    .navegacion a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-weight: bold;
+    }
+
+    .navegacion a:hover {
+      text-decoration: underline;
+    }
+
+    .contenido-principal {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .seccion-teoria {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .seccion-teoria h2 {
+      color: #4a90e2;
+    }
+
+    .pie {
+      text-align: center;
+      padding: 1rem;
+      background-color: #4a90e2;
+      color: white;
+    }
+
+    .login-opcional {
+      text-align: right;
+      margin-top: 0.5rem;
+    }
+
     .popup {
       position: fixed;
       top: 30%;
@@ -19,10 +74,12 @@
       transform: translate(-50%, -30%);
       background-color: white;
       padding: 1.5rem;
-      border: 2px solid #000;
+      border: 2px solid #4a90e2;
       z-index: 1000;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      border-radius: 8px;
     }
+
     .oculto {
       display: none;
     }
@@ -40,6 +97,7 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
+      <a href="perfil.html">Perfil</a>
     </nav>
     <div class="login-opcional">
       <button id="btn-login-toggle">👤 Iniciar sesión</button>
@@ -48,8 +106,27 @@
   </header>
 
   <main class="contenido-principal">
-    <!-- (secciones de teoría aquí, sin cambios) -->
-    <!-- El contenido teórico permanece igual -->
+    <section class="seccion-teoria">
+      <h2>🔤 Variables</h2>
+      <p>Una variable es un espacio donde puedes guardar un valor. Ejemplo en JavaScript:</p>
+      <pre><code>let nombre = "Juan";</code></pre>
+    </section>
+
+    <section class="seccion-teoria">
+      <h2>🔁 Bucles</h2>
+      <p>Sirven para repetir acciones. Ejemplo:</p>
+      <pre><code>for(let i = 0; i < 5; i++) {
+  console.log(i);
+}</code></pre>
+    </section>
+
+    <section class="seccion-teoria">
+      <h2>⚙️ Funciones</h2>
+      <p>Una función es un bloque de código reutilizable:</p>
+      <pre><code>function saludar() {
+  console.log("Hola");
+}</code></pre>
+    </section>
   </main>
 
   <footer class="pie">
@@ -79,17 +156,17 @@
       const nombre = document.getElementById("login-nombre").value;
       const clave = document.getElementById("login-clave").value;
 
-      const nombreGuardado = localStorage.getItem("usuarioNombre");
-      const claveGuardada = localStorage.getItem("usuarioClave");
-
-      if (nombre === nombreGuardado && clave === claveGuardada) {
-        localStorage.setItem("sesionIniciada", "true");
-        localStorage.setItem("nombreSesion", nombre);
-        mostrarNombreUsuario();
-        cerrarPopup();
-      } else {
-        alert("Nombre o contraseña incorrectos.");
+      const datos = JSON.parse(localStorage.getItem(`user_${nombre}`));
+      if (!datos || datos.contrasena !== clave) {
+        alert("❌ Nombre o contraseña incorrectos.");
+        return;
       }
+
+      localStorage.setItem("usuarioActivo", nombre);
+      localStorage.setItem("sesionIniciada", "true");
+      localStorage.setItem("nombreSesion", nombre);
+      mostrarNombreUsuario();
+      cerrarPopup();
     }
 
     function mostrarNombreUsuario() {
