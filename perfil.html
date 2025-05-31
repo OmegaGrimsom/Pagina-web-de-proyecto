@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Mi Perfil - Aprende Programación</title>
-  <link rel="stylesheet" href="estilos.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
@@ -20,31 +20,22 @@
       <a href="tutoriales.html">Tutoriales</a>
       <a href="perfil.html">Perfil</a>
     </nav>
+    <div class="usuario-sesion">
+      <span id="nombre-usuario">👤</span>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
   </header>
 
   <main class="contenido-principal">
     <section class="tarjeta">
-      <h2>📄 Información del usuario</h2>
-      <p><strong>Nombre actual:</strong> <span id="nombreUsuario"></span></p>
-      <p><strong>Contraseña actual:</strong> <span id="contrasenaUsuario">********</span></p>
+      <h2>👤 Información del Usuario</h2>
+      <p><strong>Nombre de usuario:</strong> <span id="nombre-usuario-perfil"></span></p>
     </section>
 
     <section class="tarjeta">
-      <h2>✏️ Cambiar nombre y/o contraseña</h2>
-      <form id="formCambios" onsubmit="guardarCambios(event)">
-        <label for="nuevoNombre">Nuevo nombre de usuario:</label><br>
-        <input type="text" id="nuevoNombre" placeholder="Nuevo nombre"><br><br>
-
-        <label for="nuevaContrasena">Nueva contraseña:</label><br>
-        <input type="password" id="nuevaContrasena" placeholder="Nueva contraseña"><br><br>
-
-        <button type="submit">Guardar cambios</button>
-      </form>
-    </section>
-
-    <section class="tarjeta">
-      <h2>🚪 Cerrar sesión</h2>
-      <button onclick="cerrarSesion()">Cerrar sesión</button>
+      <h2>🗑️ Eliminar cuenta</h2>
+      <p>Esta acción eliminará tu progreso guardado en este dispositivo. No se podrá recuperar.</p>
+      <button class="boton-eliminar" onclick="eliminarCuenta()">Eliminar mi cuenta</button>
     </section>
   </main>
 
@@ -53,65 +44,33 @@
   </footer>
 
   <script>
-    let usuarioActual = localStorage.getItem("usuarioActual");
-    if (!usuarioActual) {
-      window.location.href = "login.html";
-    }
+    const usuario = localStorage.getItem("usuarioActual");
 
-    const datos = JSON.parse(localStorage.getItem("usuario_" + usuarioActual)) || {};
-    document.getElementById("nombreUsuario").textContent = usuarioActual;
-    document.getElementById("contrasenaUsuario").textContent = "*".repeat((datos.password || "").length);
-
-    function guardarCambios(event) {
-      event.preventDefault();
-
-      const nuevoNombre = document.getElementById("nuevoNombre").value.trim();
-      const nuevaContrasena = document.getElementById("nuevaContrasena").value;
-
-      if (!nuevoNombre && !nuevaContrasena) {
-        alert("Debes ingresar al menos un nuevo nombre o contraseña.");
-        return;
-      }
-
-      // Validar nombre disponible si se cambia
-      if (nuevoNombre && nuevoNombre !== usuarioActual && localStorage.getItem("usuario_" + nuevoNombre)) {
-        alert("Ese nombre de usuario ya está en uso.");
-        return;
-      }
-
-      // Guardar nueva contraseña si se cambia
-      if (nuevaContrasena) {
-        datos.password = nuevaContrasena;
-      }
-
-      // Cambiar nombre si se proporciona
-      if (nuevoNombre && nuevoNombre !== usuarioActual) {
-        localStorage.setItem("usuario_" + nuevoNombre, JSON.stringify(datos));
-        localStorage.removeItem("usuario_" + usuarioActual);
-
-        // Transferir progreso
-        for (let clave in localStorage) {
-          if (clave.startsWith(usuarioActual + "_")) {
-            const nuevoClave = clave.replace(usuarioActual + "_", nuevoNombre + "_");
-            localStorage.setItem(nuevoClave, localStorage.getItem(clave));
-            localStorage.removeItem(clave);
-          }
-        }
-
-        usuarioActual = nuevoNombre;
-        localStorage.setItem("usuarioActual", nuevoNombre);
-        alert("Nombre de usuario actualizado.");
-      } else {
-        localStorage.setItem("usuario_" + usuarioActual, JSON.stringify(datos));
-        alert("Contraseña actualizada.");
-      }
-
-      location.reload();
+    if (!usuario) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("nombre-usuario").textContent = `👤 ${usuario}`;
+      document.getElementById("nombre-usuario-perfil").textContent = usuario;
     }
 
     function cerrarSesion() {
       localStorage.removeItem("usuarioActual");
-      window.location.href = "login.html";
+      window.location.href = "index.html";
+    }
+
+    function eliminarCuenta() {
+      const confirmacion = confirm("¿Estás seguro de que deseas eliminar tu cuenta y todo tu progreso?");
+      if (confirmacion) {
+        // Eliminar todo lo relacionado con el usuario en localStorage
+        Object.keys(localStorage).forEach(key => {
+          if (key.startsWith(usuario)) {
+            localStorage.removeItem(key);
+          }
+        });
+        localStorage.removeItem("usuarioActual");
+        alert("🗑️ Tu cuenta ha sido eliminada.");
+        window.location.href = "index.html";
+      }
     }
   </script>
 
