@@ -8,17 +8,39 @@
     body {
       text-align: center;
       padding: 2rem;
+      background-color: #eef2f3;
+      font-family: sans-serif;
     }
     input {
       margin: 0.5rem;
       padding: 0.5rem;
+      width: 80%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
     .contenedor {
       max-width: 400px;
       margin: auto;
-      background: #f9f9f9;
+      background: #fff;
       padding: 2rem;
       border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #mensaje {
+      margin-top: 1rem;
+      color: red;
     }
   </style>
 </head>
@@ -34,7 +56,7 @@
 
   <script>
     function registrar() {
-      const usuario = document.getElementById('usuario').value;
+      const usuario = document.getElementById('usuario').value.trim();
       const contrasena = document.getElementById('contrasena').value;
       if (!usuario || !contrasena) {
         document.getElementById('mensaje').textContent = '⚠️ Llena ambos campos';
@@ -45,19 +67,19 @@
         return;
       }
       localStorage.setItem(`user_${usuario}`, JSON.stringify({ contrasena, progreso: {} }));
-      localStorage.setItem('usuarioActivo', usuario);
+      localStorage.setItem('usuarioActual', usuario);
       location.href = 'index.html';
     }
 
     function iniciarSesion() {
-      const usuario = document.getElementById('usuario').value;
+      const usuario = document.getElementById('usuario').value.trim();
       const contrasena = document.getElementById('contrasena').value;
       const datos = JSON.parse(localStorage.getItem(`user_${usuario}`));
       if (!datos || datos.contrasena !== contrasena) {
         document.getElementById('mensaje').textContent = '❌ Usuario o contraseña incorrectos';
         return;
       }
-      localStorage.setItem('usuarioActivo', usuario);
+      localStorage.setItem('usuarioActual', usuario);
       location.href = 'index.html';
     }
   </script>
