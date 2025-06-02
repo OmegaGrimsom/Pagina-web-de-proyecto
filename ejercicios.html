@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Ejercicios - Aprende Programación</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="estilos.css" />
+  <style>
+    .tarjeta {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .completado {
+      border-color: green;
+      background-color: #e6ffe6;
+    }
+    .botones {
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 <body>
 
   <header class="encabezado">
-    <h1>📝 Ejercicios</h1>
+    <h1>💡 Ejercicios</h1>
     <nav class="navegacion">
       <a href="index.html">Inicio</a>
       <a href="teoria.html">Teoría</a>
@@ -21,68 +35,26 @@
       <a href="perfil.html">Perfil</a>
     </nav>
     <div class="usuario-sesion">
-      <span id="nombre-usuario">👤</span>
-      <button onclick="cerrarSesion()">Cerrar sesión</button>
+      <span id="nombre-usuario"></span>
     </div>
   </header>
 
   <main class="contenido-principal">
+    
+    <!-- Generador de ejercicios -->
+    <script>
+      const ejercicios = [
+        { id: 1, titulo: "Variables y saludo", descripcion: "Crea una variable con tu nombre y muestra un saludo en consola." },
+        { id: 2, titulo: "Suma simple", descripcion: "Declara dos números y muestra la suma." },
+        { id: 3, titulo: "Condicionales", descripcion: "Escribe un programa que diga si un número es mayor o menor que 10." },
+        { id: 4, titulo: "Bucle for", descripcion: "Imprime los números del 1 al 10 usando un bucle." },
+        { id: 5, titulo: "Funciones", descripcion: "Crea una función que reciba un nombre y devuelva un saludo." },
+        { id: 6, titulo: "Arreglos", descripcion: "Declara un arreglo con 5 frutas y muéstralas con un bucle." },
+        { id: 7, titulo: "Objeto persona", descripcion: "Crea un objeto con tu nombre, edad y ciudad, luego muéstralo." }
+      ];
+    </script>
 
-    <section class="tarjeta">
-      <h2>📌 Ejercicio 1: Saludo</h2>
-      <p>Escribe un programa que salude al usuario usando su nombre.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarEjercicio(1)">Marcar como completado</button>
-    </section>
-
-    <section class="tarjeta">
-      <h2>🧠 Ejercicio 2: Suma simple</h2>
-      <p>Escribe un programa que sume dos números ingresados por el usuario.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarEjercicio(2)">Marcar como completado</button>
-    </section>
-
-    <section class="tarjeta">
-      <h2>🔁 Ejercicio 3: Contador del 1 al 10</h2>
-      <p>Crea un bucle que muestre los números del 1 al 10.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarEjercicio(3)">Marcar como completado</button>
-    </section>
-
-    <section class="tarjeta">
-      <h2>💡 Ejercicio 4: Número par o impar</h2>
-      <p>Pide un número y muestra si es par o impar.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarEjercicio(4)">Marcar como completado</button>
-    </section>
-
-    <section class="tarjeta">
-      <h2>🔄 Ejercicio 5: Tabla de multiplicar</h2>
-      <p>Escribe un programa que muestre la tabla de multiplicar de un número.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarEjercicio(5)">Marcar como completado</button>
-    </section>
-
-    <section class="tarjeta">
-      <h2>📦 Ejercicio 6: Lista de frutas</h2>
-      <p>Crea un arreglo con 5 frutas y muéstralas en consola una por una.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarEjercicio(6)">Marcar como completado</button>
-    </section>
-
-    <section class="tarjeta">
-      <h2>🔠 Ejercicio 7: Contador de vocales</h2>
-      <p>Haz un programa que cuente cuántas vocales hay en un texto dado.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarEjercicio(7)">Marcar como completado</button>
-    </section>
-
-    <section class="tarjeta">
-      <h2>🕒 Ejercicio 8: Calculadora de edad</h2>
-      <p>Pide el año de nacimiento y calcula la edad actual del usuario.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarEjercicio(8)">Marcar como completado</button>
-    </section>
+    <div id="contenedor-ejercicios"></div>
 
   </main>
 
@@ -91,22 +63,71 @@
   </footer>
 
   <script>
-    const usuario = localStorage.getItem("usuarioActivo");
-    if (!usuario) {
-      window.location.href = "index.html";
-    } else {
-      document.getElementById("nombre-usuario").textContent = `👤 ${usuario}`;
+    const usuario = localStorage.getItem("usuarioActivo") || "anonimo";
+    const contenedor = document.getElementById("contenedor-ejercicios");
+
+    function renderEjercicios() {
+      ejercicios.forEach(ej => {
+        const completado = localStorage.getItem(`${usuario}_ejercicio${ej.id}`) === "true";
+        const clase = completado ? "tarjeta completado" : "tarjeta";
+
+        const div = document.createElement("div");
+        div.className = clase;
+        div.innerHTML = `
+          <h2>📘 Ejercicio ${ej.id}: ${ej.titulo}</h2>
+          <p>${ej.descripcion}</p>
+          <textarea id="codigo${ej.id}" rows="6" style="width: 100%;" placeholder="Escribe tu código aquí..."></textarea>
+          <div class="botones">
+            <button onclick="mostrarAyuda(${ej.id})">Ayuda</button>
+            <button onclick="probarCodigo(${ej.id})">Probar código</button>
+            <button onclick="marcarCompletado(${ej.id}, this)">Marcar como completado</button>
+          </div>
+          <pre id="salida${ej.id}" style="background: #f0f0f0; padding: 0.5rem;"></pre>
+        `;
+        contenedor.appendChild(div);
+      });
     }
 
-    function marcarEjercicio(numero) {
-      localStorage.setItem(`${usuario}_ejercicio${numero}`, "true");
-      alert(`✅ ¡Ejercicio ${numero} marcado como completado!`);
+    function mostrarAyuda(id) {
+      const mensajes = {
+        1: "Ejemplo: let nombre = 'Ana'; console.log('Hola ' + nombre);",
+        2: "Ejemplo: let a = 5; let b = 3; console.log(a + b);",
+        3: "Ejemplo: let num = 8; if(num > 10){...} else {...}",
+        4: "Ejemplo: for(let i=1; i<=10; i++){ console.log(i); }",
+        5: "Ejemplo: function saludar(nombre){ return 'Hola ' + nombre; }",
+        6: "Ejemplo: let frutas = ['manzana', 'pera', 'uva']; for(let f of frutas){ console.log(f); }",
+        7: "Ejemplo: let persona = {nombre: 'Luis', edad: 14, ciudad: 'Lima'}; console.log(persona);"
+      };
+      alert(mensajes[id] || "Este ejercicio no tiene ayuda específica aún.");
     }
 
-    function cerrarSesion() {
-      localStorage.removeItem("usuarioActivo");
-      window.location.href = "index.html";
+    function probarCodigo(id) {
+      const codigo = document.getElementById(`codigo${id}`).value;
+      const salida = document.getElementById(`salida${id}`);
+      try {
+        const resultado = eval(codigo);
+        salida.textContent = resultado !== undefined ? resultado : "✅ Código ejecutado sin errores.";
+      } catch (err) {
+        salida.textContent = "❌ Error: " + err.message;
+      }
     }
+
+    function marcarCompletado(id, boton) {
+      localStorage.setItem(`${usuario}_ejercicio${id}`, "true");
+      boton.closest(".tarjeta").classList.add("completado");
+      alert(`✅ ¡Ejercicio ${id} completado!`);
+    }
+
+    function mostrarNombreUsuario() {
+      const span = document.getElementById("nombre-usuario");
+      const nombre = localStorage.getItem("usuarioActivo");
+      if (nombre) {
+        span.textContent = `👤 ${nombre}`;
+      }
+    }
+
+    renderEjercicios();
+    mostrarNombreUsuario();
   </script>
 
 </body>
