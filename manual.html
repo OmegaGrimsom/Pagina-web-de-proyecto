@@ -2,31 +2,38 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Manual del Sitio - Aprende Programación</title>
+  <title>Manual - Aprende Programación</title>
   <link rel="stylesheet" href="estilos.css">
   <style>
-    .contenido-principal {
-      max-width: 800px;
+    main {
+      max-width: 900px;
       margin: auto;
       padding: 2rem;
-      background-color: #ffffffdd;
-      border-radius: 10px;
+      background: #fefefe;
+      border-radius: 8px;
     }
     h2 {
-      color: #2c3e50;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.3rem;
+      margin-top: 2rem;
+      color: #333;
     }
     ul {
-      margin-top: 0.5rem;
       padding-left: 1.5rem;
+    }
+    .login-opcional {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    #nombre-usuario {
+      margin-left: 1rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
   <header class="encabezado">
-    <h1>📖 Manual del Sitio</h1>
+    <h1>📘 Manual del Sitio</h1>
     <nav class="navegacion">
       <a href="index.html">Inicio</a>
       <a href="teoria.html">Teoría</a>
@@ -38,69 +45,80 @@
       <a href="perfil.html">Perfil</a>
       <a href="manual.html">Manual</a>
     </nav>
+    <div class="login-opcional">
+      <button id="btn-login-toggle">👤 Iniciar sesión</button>
+      <span id="nombre-usuario"></span>
+    </div>
   </header>
 
-  <main class="contenido-principal">
-    <h2>¿Qué es Aprende Programación?</h2>
-    <p>Es una plataforma educativa pensada para alumnos de secundaria. A través de teoría, ejercicios, retos y tutoriales, podrás aprender los fundamentos de la programación de manera divertida y visual.</p>
+  <main>
+    <h2>¿Qué es este sitio?</h2>
+    <p>Es una plataforma educativa pensada para alumnos de secundaria que desean aprender programación paso a paso, con teoría clara, ejercicios prácticos, retos, y seguimiento de progreso.</p>
 
-    <h2>🔐 Inicio de sesión</h2>
-    <p>El inicio de sesión es opcional. Si deseas guardar tu progreso y acceder a funciones personalizadas, puedes registrarte con un nombre de usuario y contraseña.</p>
+    <h2>Secciones del sitio</h2>
     <ul>
-      <li>En la esquina superior derecha encontrarás el botón de inicio de sesión.</li>
-      <li>Puedes registrarte o iniciar sesión según tu estado.</li>
-      <li>Una vez iniciada la sesión, verás tu nombre en el encabezado.</li>
+      <li><strong>Inicio:</strong> Presentación general y motivación.</li>
+      <li><strong>Teoría:</strong> Conceptos fundamentales de programación.</li>
+      <li><strong>Lenguajes:</strong> Introducción a lenguajes como HTML, CSS y JavaScript.</li>
+      <li><strong>Ejercicios:</strong> Actividades guiadas con espacio para escribir código.</li>
+      <li><strong>Retos:</strong> Problemas de lógica y programación más desafiantes.</li>
+      <li><strong>Progreso:</strong> Muestra qué ejercicios y retos has completado.</li>
+      <li><strong>Tutoriales:</strong> Mini guías para aprender temas específicos.</li>
+      <li><strong>Perfil:</strong> Gestiona tu cuenta y puedes cerrar sesión o eliminarla.</li>
     </ul>
 
-    <h2>📘 Sección Teoría</h2>
-    <p>Aquí aprenderás los conceptos básicos de la programación, como:</p>
+    <h2>Inicio de sesión</h2>
+    <p>No es obligatorio iniciar sesión para usar el sitio. Pero si lo haces, se guardará tu progreso en tu navegador con <strong>localStorage</strong>.</p>
+
+    <h2>¿Dónde se guarda el progreso?</h2>
+    <p>Tu navegador guarda la información localmente. Esto significa que si cambias de navegador o computadora, tu progreso no se transferirá (a menos que se conecte a una base de datos como Firebase).</p>
+
+    <h2>Consejos de uso</h2>
     <ul>
-      <li>Variables y tipos de datos</li>
-      <li>Condicionales y bucles</li>
-      <li>Funciones</li>
-      <li>Arreglos y más</li>
+      <li>Guarda tus avances presionando los botones de "Marcar como completado".</li>
+      <li>Utiliza el apartado de perfil para ver tu nombre y cerrar sesión.</li>
+      <li>Revisa el manual o tutoriales si te pierdes en algún punto.</li>
     </ul>
 
-    <h2>🛠️ Sección Lenguajes</h2>
-    <p>Explicaciones sobre los lenguajes de programación que puedes aprender en la plataforma, como JavaScript, HTML y CSS.</p>
-
-    <h2>✅ Sección Ejercicios</h2>
-    <p>Practica con ejercicios interactivos y guarda tu código en el navegador.</p>
-    <ul>
-      <li>Puedes escribir tu solución directamente.</li>
-      <li>Guarda tu código localmente.</li>
-      <li>Marca el ejercicio como completado para seguir tu progreso.</li>
-    </ul>
-
-    <h2>🏆 Sección Retos</h2>
-    <p>Desafíos más complejos para poner a prueba tus habilidades. Igual que los ejercicios, puedes marcar los retos como completados.</p>
-
-    <h2>📈 Sección Progreso</h2>
-    <p>Consulta qué ejercicios y retos has completado. Esta sección se actualiza automáticamente cuando marcas elementos como terminados.</p>
-
-    <h2>🎓 Sección Tutoriales</h2>
-    <p>Tutoriales paso a paso para aprender a programar de forma visual.</p>
-
-    <h2>👤 Sección Perfil</h2>
-    <p>Administra tu cuenta:</p>
-    <ul>
-      <li>Ver tu nombre de usuario</li>
-      <li>Cerrar sesión</li>
-      <li>Eliminar tu cuenta (borra tu progreso)</li>
-    </ul>
-
-    <h2>📌 Sugerencias de uso</h2>
-    <ul>
-      <li>Revisa primero la teoría antes de pasar a los ejercicios.</li>
-      <li>Resuelve retos cuando ya te sientas listo.</li>
-      <li>Inicia sesión si deseas que tu avance quede guardado.</li>
-      <li>Explora los tutoriales para aprender con ejemplos visuales.</li>
-    </ul>
+    <h2>¿Quién hizo esto?</h2>
+    <p>Este sitio fue creado con cariño para apoyar el aprendizaje de programación en estudiantes de secundaria.</p>
   </main>
 
   <footer class="pie">
     <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
   </footer>
 
+  <script>
+    // Sesión opcional
+    function mostrarPopup() {
+      document.getElementById("popup-login").classList.remove("oculto");
+    }
+
+    function cerrarPopup() {
+      document.getElementById("popup-login").classList.add("oculto");
+    }
+
+    document.getElementById("btn-login-toggle").addEventListener("click", mostrarPopup);
+
+    function mostrarNombreUsuario() {
+      const nombre = localStorage.getItem("nombreSesion");
+      const span = document.getElementById("nombre-usuario");
+      if (nombre) {
+        span.textContent = `Hola, ${nombre} 👋`;
+      } else {
+        span.textContent = "";
+      }
+    }
+
+    function revisarSesion() {
+      if (localStorage.getItem("sesionIniciada") === "true") {
+        mostrarNombreUsuario();
+      }
+    }
+
+    revisarSesion();
+  </script>
+
 </body>
 </html>
+
