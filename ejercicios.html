@@ -5,47 +5,11 @@
   <title>Ejercicios - Aprende Programación</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="estilos.css">
-  <style>
-    textarea {
-      width: 100%;
-      height: 100px;
-      margin-top: 10px;
-      font-family: monospace;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 8px;
-      resize: vertical;
-    }
-
-    .ayuda {
-      margin-top: 10px;
-      color: #333;
-      background-color: #f1f1f1;
-      padding: 10px;
-      border-left: 4px solid #2196F3;
-      display: none;
-    }
-
-    .boton-ejecutar {
-      margin-top: 8px;
-      padding: 6px 12px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .boton-ejecutar:hover {
-      background-color: #45a049;
-    }
-  </style>
 </head>
 <body>
 
   <header class="encabezado">
-    <h1>🧪 Ejercicios</h1>
+    <h1>📝 Ejercicios</h1>
     <nav class="navegacion">
       <a href="index.html">Inicio</a>
       <a href="teoria.html">Teoría</a>
@@ -54,59 +18,70 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
+      <a href="perfil.html">Perfil</a>
     </nav>
+    <div class="usuario-sesion">
+      <span id="nombre-usuario">👤</span>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
   </header>
 
   <main class="contenido-principal">
 
-    <!-- Ejercicio 1 -->
     <section class="tarjeta">
-      <h2>✍️ Ejercicio 1: Variables</h2>
-      <p>Crea una variable llamada <code>nombre</code> y asígnale tu nombre.</p>
-      <button onclick="mostrarAyuda(1)">¿Necesitas ayuda?</button>
-      <div id="ayuda1" class="ayuda">💡 Usa: <code>let nombre = "TuNombre";</code></div>
-      <textarea id="codigo1" placeholder="Escribe tu código aquí..."></textarea>
-      <button class="boton-ejecutar" onclick="ejecutarCodigo(1)">Probar código</button>
+      <h2>📌 Ejercicio 1: Saludo</h2>
+      <p>Escribe un programa que salude al usuario usando su nombre.</p>
+      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="marcarEjercicio(1)">Marcar como completado</button>
     </section>
 
-    <!-- Ejercicio 2 -->
     <section class="tarjeta">
-      <h2>✍️ Ejercicio 2: Condicional</h2>
-      <p>Usa una estructura <code>if</code> para mostrar un mensaje si una persona tiene 18 años o más.</p>
-      <button onclick="mostrarAyuda(2)">¿Necesitas ayuda?</button>
-      <div id="ayuda2" class="ayuda">💡 Usa: <code>let edad = 18;<br>if (edad >= 18) { alert("Mayor de edad"); }</code></div>
-      <textarea id="codigo2" placeholder="Escribe tu código aquí..."></textarea>
-      <button class="boton-ejecutar" onclick="ejecutarCodigo(2)">Probar código</button>
+      <h2>🧠 Ejercicio 2: Suma simple</h2>
+      <p>Escribe un programa que sume dos números ingresados por el usuario.</p>
+      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="marcarEjercicio(2)">Marcar como completado</button>
     </section>
 
-    <!-- Ejercicio 3 -->
     <section class="tarjeta">
-      <h2>✍️ Ejercicio 3: Bucle</h2>
-      <p>Haz un bucle que imprima los números del 1 al 5 en la consola.</p>
-      <button onclick="mostrarAyuda(3)">¿Necesitas ayuda?</button>
-      <div id="ayuda3" class="ayuda">💡 Usa: <code>for (let i = 1; i <= 5; i++) { console.log(i); }</code></div>
-      <textarea id="codigo3" placeholder="Escribe tu código aquí..."></textarea>
-      <button class="boton-ejecutar" onclick="ejecutarCodigo(3)">Probar código</button>
+      <h2>🔁 Ejercicio 3: Contador del 1 al 10</h2>
+      <p>Crea un bucle que muestre los números del 1 al 10.</p>
+      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="marcarEjercicio(3)">Marcar como completado</button>
     </section>
 
-    <!-- Ejercicio 4 -->
     <section class="tarjeta">
-      <h2>✍️ Ejercicio 4: Función</h2>
-      <p>Crea una función llamada <code>saludar</code> que muestre un mensaje como "¡Hola desde la función!".</p>
-      <button onclick="mostrarAyuda(4)">¿Necesitas ayuda?</button>
-      <div id="ayuda4" class="ayuda">💡 Usa: <code>function saludar() { alert("¡Hola desde la función!"); }<br>saludar();</code></div>
-      <textarea id="codigo4" placeholder="Escribe tu código aquí..."></textarea>
-      <button class="boton-ejecutar" onclick="ejecutarCodigo(4)">Probar código</button>
+      <h2>💡 Ejercicio 4: Número par o impar</h2>
+      <p>Pide un número y muestra si es par o impar.</p>
+      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="marcarEjercicio(4)">Marcar como completado</button>
     </section>
 
-    <!-- Ejercicio 5 -->
     <section class="tarjeta">
-      <h2>✍️ Ejercicio 5: Interacción con usuario</h2>
-      <p>Pide al usuario su edad con <code>prompt</code> y muestra un mensaje con <code>alert</code>.</p>
-      <button onclick="mostrarAyuda(5)">¿Necesitas ayuda?</button>
-      <div id="ayuda5" class="ayuda">💡 Usa: <code>let edad = prompt("¿Tu edad?"); alert("Tienes " + edad + " años");</code></div>
-      <textarea id="codigo5" placeholder="Escribe tu código aquí..."></textarea>
-      <button class="boton-ejecutar" onclick="ejecutarCodigo(5)">Probar código</button>
+      <h2>🔄 Ejercicio 5: Tabla de multiplicar</h2>
+      <p>Escribe un programa que muestre la tabla de multiplicar de un número.</p>
+      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="marcarEjercicio(5)">Marcar como completado</button>
+    </section>
+
+    <section class="tarjeta">
+      <h2>📦 Ejercicio 6: Lista de frutas</h2>
+      <p>Crea un arreglo con 5 frutas y muéstralas en consola una por una.</p>
+      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="marcarEjercicio(6)">Marcar como completado</button>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🔠 Ejercicio 7: Contador de vocales</h2>
+      <p>Haz un programa que cuente cuántas vocales hay en un texto dado.</p>
+      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="marcarEjercicio(7)">Marcar como completado</button>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🕒 Ejercicio 8: Calculadora de edad</h2>
+      <p>Pide el año de nacimiento y calcula la edad actual del usuario.</p>
+      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <button onclick="marcarEjercicio(8)">Marcar como completado</button>
     </section>
 
   </main>
@@ -116,18 +91,21 @@
   </footer>
 
   <script>
-    function mostrarAyuda(ejercicio) {
-      const ayuda = document.getElementById("ayuda" + ejercicio);
-      ayuda.style.display = ayuda.style.display === "block" ? "none" : "block";
+    const usuario = localStorage.getItem("usuarioActivo");
+    if (!usuario) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("nombre-usuario").textContent = `👤 ${usuario}`;
     }
 
-    function ejecutarCodigo(numero) {
-      const codigo = document.getElementById("codigo" + numero).value;
-      try {
-        new Function(codigo)(); // Ejecuta el código del textarea
-      } catch (error) {
-        alert("⚠️ Error en tu código: " + error.message);
-      }
+    function marcarEjercicio(numero) {
+      localStorage.setItem(`${usuario}_ejercicio${numero}`, "true");
+      alert(`✅ ¡Ejercicio ${numero} marcado como completado!`);
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActivo");
+      window.location.href = "index.html";
     }
   </script>
 
