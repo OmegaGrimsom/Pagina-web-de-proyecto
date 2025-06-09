@@ -104,11 +104,27 @@
     function probarCodigo(id) {
       const codigo = document.getElementById(`codigo${id}`).value;
       const salida = document.getElementById(`salida${id}`);
+
+      let logs = [];
+      const originalConsoleLog = console.log;
+      console.log = function(...args) {
+        logs.push(args.join(' '));
+        originalConsoleLog.apply(console, args);
+      }
+
       try {
         const resultado = eval(codigo);
-        salida.textContent = resultado !== undefined ? resultado : "✅ Código ejecutado sin errores.";
+        if (logs.length > 0) {
+          salida.textContent = logs.join('\n');
+        } else if (resultado !== undefined) {
+          salida.textContent = resultado;
+        } else {
+          salida.textContent = "✅ Código ejecutado sin errores.";
+        }
       } catch (err) {
         salida.textContent = "❌ Error: " + err.message;
+      } finally {
+        console.log = originalConsoleLog;
       }
     }
 
