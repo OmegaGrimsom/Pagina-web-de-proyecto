@@ -1,132 +1,38 @@
-/* -------------  ESTILO GENERAL ------------- */
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:"Segoe UI","Helvetica Neue",sans-serif;
-  background:#f9f9f9;
-  color:#333;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f7f9fc;
+  color: #333;
 }
 
-/* Enlaces */
-a{color:#1a237e;text-decoration:none}
-a:hover{opacity:.8}
-
-/* -------------  ENCABEZADO ------------- */
-.encabezado{
-  background:#1a237e;
-  color:#fff;
-  padding:1rem 2rem;
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:space-between;
-  position:relative;
-}
-.encabezado h1{
-  margin:0;
-  font-size:1.8rem;
-  flex:1 1 100%;
+header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 1em;
 }
 
-.navegacion{
-  display:flex;
-  flex-wrap:wrap;
-  gap:1rem;
-  flex:1 1 100%;
-  margin-top:.5rem;
-}
-.navegacion a{
-  color:#fff;
-  padding:.35rem .8rem;
-  border-radius:4px;
-}
-.navegacion a:hover{
-  background:rgba(255,255,255,.2);
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
 }
 
-/* Botón sesión */
-.login-opcional{
-  position:absolute;
-  top:1rem;
-  right:1rem;
-  text-align:right;
-  z-index:10;
-}
-.login-opcional button{
-  background:transparent;
-  border:1px solid #fff;
-  color:#fff;
-  padding:.3rem .7rem;
-  border-radius:4px;
-  cursor:pointer;
-}
-.login-opcional button:hover{
-  background:rgba(255,255,255,.2);
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* -------------  CONTENIDO ------------- */
-main.contenido-principal{
-  padding:2rem;
-  margin:auto;
-  max-width:1000px;
-}
-.tarjeta{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:6px;
-  padding:1.5rem;
-  margin-bottom:1.5rem;
-  box-shadow:0 1px 4px rgba(0,0,0,.05);
-}
-ul{padding-left:1.2rem}
-
-/* -------------  PIE ------------- */
-footer.pie{
-  background:#1a237e;
-  color:#fff;
-  text-align:center;
-  padding:1rem;
-  font-size:.9rem;
-  margin-top:2rem;
+.contenido {
+  padding: 2em;
 }
 
-/* -------------  BOTONES Y CAMPOS ------------- */
-button{
-  background:#1976d2;
-  color:#fff;
-  border:none;
-  padding:.5rem 1rem;
-  border-radius:4px;
-  cursor:pointer;
-  margin-top:.5rem;
+footer {
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  margin-top: 2em;
 }
-button:hover{background:#0d47a1}
-
-textarea,
-input[type="text"],
-input[type="password"],
-pre code{
-  width:100%;
-  padding:.6rem;
-  margin-top:.5rem;
-  border:1px solid #ccc;
-  border-radius:4px;
-  background:#f4f4f4;
-  font-family:monospace;
-}
-
-/* -------------  POP-UP LOGIN ------------- */
-.popup{
-  position:fixed;
-  top:30%;
-  left:50%;
-  transform:translate(-50%,-30%);
-  background:#fff;
-  border:2px solid #000;
-  padding:1.5rem;
-  z-index:1000;
-  box-shadow:0 0 10px rgba(0,0,0,.3);
-}
-.oculto{display:none}
-
