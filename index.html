@@ -4,7 +4,30 @@
   <meta charset="UTF-8">
   <title>Inicio - Aprende Programación</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="estilos.css"> <!-- Aquí irá el nuevo CSS formal -->
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    .login-opcional {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      text-align: right;
+    }
+
+    .popup {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      background-color: white;
+      padding: 1.5rem;
+      border: 2px solid #000;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .oculto {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -26,12 +49,12 @@
   </header>
 
   <main class="contenido-principal">
-    <section class="tarjeta">
+    <section class="bienvenida tarjeta">
       <h2>🎓 Bienvenido</h2>
-      <p>Este sitio está hecho para ayudarte a aprender programación desde cero. Aquí encontrarás teoría, ejemplos, ejercicios, retos y tutoriales paso a paso.</p>
+      <p>Este sitio está hecho para ayudarte a aprender programación desde cero. Aquí encontrarás teoría, ejemplos, ejercicios, retos, y tutoriales paso a paso.</p>
     </section>
 
-    <section class="tarjeta">
+    <section class="introduccion tarjeta">
       <h2>👩‍💻 ¿Qué aprenderás?</h2>
       <ul>
         <li>📘 Fundamentos de programación</li>
@@ -41,7 +64,7 @@
       </ul>
     </section>
 
-    <section class="tarjeta">
+    <section class="motivo tarjeta">
       <h2>💡 ¿Por qué aprender programación?</h2>
       <p>La programación te ayuda a pensar de forma lógica, resolver problemas y crear tus propios proyectos digitales. ¡Es divertido y útil para tu futuro!</p>
     </section>
@@ -51,11 +74,10 @@
     <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
   </footer>
 
-  <!-- POPUP LOGIN -->
   <div id="popup-login" class="popup oculto">
     <h2>Iniciar sesión</h2>
-    <label>Nombre:<br><input type="text" id="login-nombre" class="campo-texto"></label><br>
-    <label>Contraseña:<br><input type="password" id="login-clave" class="campo-texto"></label><br>
+    <label>Nombre:<br><input type="text" id="login-nombre"></label><br>
+    <label>Contraseña:<br><input type="password" id="login-clave"></label><br>
     <button onclick="iniciarSesion()">Entrar</button>
     <button onclick="cerrarPopup()">Cancelar</button>
   </div>
@@ -74,6 +96,7 @@
     function iniciarSesion() {
       const nombre = document.getElementById("login-nombre").value;
       const clave = document.getElementById("login-clave").value;
+
       const nombreGuardado = localStorage.getItem("usuarioNombre");
       const claveGuardada = localStorage.getItem("usuarioClave");
 
@@ -105,5 +128,6 @@
 
     revisarSesion();
   </script>
+
 </body>
 </html>
