@@ -1,38 +1,116 @@
+/* RESET Y TIPOGRAFÍA */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background-color: #f7f9fc;
+  padding: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background-color: #f9f9f9;
   color: #333;
 }
 
-header {
-  background-color: #4a90e2;
-  color: white;
-  padding: 1em;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-}
-
-nav a {
-  color: white;
+a {
   text-decoration: none;
-  font-weight: bold;
+  color: #0d47a1;
 }
 
-.contenido {
-  padding: 2em;
+h1, h2 {
+  color: #1a237e;
 }
 
-footer {
-  background-color: #4a90e2;
+main {
+  padding: 2rem;
+}
+
+/* ENCABEZADO */
+.encabezado {
+  background-color: #1a237e;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.navegacion {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.navegacion a {
+  color: white;
+  font-weight: 500;
+}
+
+/* TARJETAS */
+.tarjeta {
+  background-color: white;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* PIE DE PÁGINA */
+.pie {
+  background-color: #1a237e;
   color: white;
   text-align: center;
-  padding: 1em;
-  margin-top: 2em;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* BOTONES */
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: #0d47a1;
+}
+
+/* ÁREA DE CÓDIGO */
+textarea, pre code {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+/* SESIÓN Y PERFIL */
+.login-opcional, .usuario-sesion {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.login-opcional button,
+.usuario-sesion button {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+
+.login-opcional button:hover,
+.usuario-sesion button:hover {
+  background-color: rgba(255,255,255,0.2);
 }
