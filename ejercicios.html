@@ -106,26 +106,27 @@
       const salida = document.getElementById(`salida${id}`);
 
       let logs = [];
-      const originalConsoleLog = console.log;
+
+      // Sobrescribimos console.log para capturar la salida
+      const consolaOriginal = console.log;
       console.log = function(...args) {
-        logs.push(args.join(' '));
-        originalConsoleLog.apply(console, args);
-      }
+        const mensaje = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' ');
+        logs.push(mensaje);
+      };
 
       try {
-        const resultado = eval(codigo);
-        if (logs.length > 0) {
-          salida.textContent = logs.join('\n');
-        } else if (resultado !== undefined) {
-          salida.textContent = resultado;
-        } else {
+        eval(codigo);
+        if (logs.length === 0) {
           salida.textContent = "✅ Código ejecutado sin errores.";
+        } else {
+          salida.textContent = logs.join('\n');
         }
       } catch (err) {
         salida.textContent = "❌ Error: " + err.message;
-      } finally {
-        console.log = originalConsoleLog;
       }
+
+      // Restauramos console.log
+      console.log = consolaOriginal;
     }
 
     function marcarCompletado(id, boton) {
