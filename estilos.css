@@ -1,4 +1,4 @@
-/* RESET Y TIPOGRAFÍA */
+/* Tipografía y Reset */
 body {
   margin: 0;
   padding: 0;
@@ -9,57 +9,69 @@ body {
 
 a {
   text-decoration: none;
-  color: #0d47a1;
-}
-
-h1, h2 {
   color: #1a237e;
 }
 
-main {
-  padding: 2rem;
-}
-
-/* ENCABEZADO */
+/* Encabezado */
 .encabezado {
   background-color: #1a237e;
   color: white;
   padding: 1rem 2rem;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  position: relative;
 }
 
 .encabezado h1 {
   margin: 0;
   font-size: 1.8rem;
+  flex: 1 1 100%;
 }
 
+/* Navegación */
 .navegacion {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
+  flex: 1 1 100%;
 }
 
 .navegacion a {
   color: white;
   font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
 }
 
-/* TARJETAS */
+.navegacion a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Tarjetas y contenido */
+main.contenido-principal {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
 .tarjeta {
   background-color: white;
-  border: 1px solid #dcdcdc;
+  border: 1px solid #ddd;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-/* PIE DE PÁGINA */
-.pie {
+ul {
+  padding-left: 1.2rem;
+}
+
+/* Pie de página */
+footer.pie {
   background-color: #1a237e;
   color: white;
   text-align: center;
@@ -68,7 +80,7 @@ main {
   margin-top: 2rem;
 }
 
-/* BOTONES */
+/* Botones generales */
 button {
   background-color: #1976d2;
   color: white;
@@ -83,26 +95,44 @@ button:hover {
   background-color: #0d47a1;
 }
 
-/* ÁREA DE CÓDIGO */
-textarea, pre code {
+/* Área de código y entrada */
+textarea, pre code, input[type="text"], input[type="password"] {
   width: 100%;
-  min-height: 120px;
-  padding: 0.75rem;
+  padding: 0.6rem;
   border: 1px solid #ccc;
-  font-family: 'Courier New', monospace;
-  font-size: 0.95rem;
   border-radius: 4px;
-  background-color: #f5f5f5;
-}
-
-/* SESIÓN Y PERFIL */
-.login-opcional, .usuario-sesion {
-  font-size: 0.9rem;
+  font-family: monospace;
+  background-color: #f4f4f4;
   margin-top: 0.5rem;
 }
 
-.login-opcional button,
-.usuario-sesion button {
+/* Popup login */
+.popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background-color: white;
+  padding: 1.5rem;
+  border: 2px solid #000;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.oculto {
+  display: none;
+}
+
+/* Login opcional en header */
+.login-opcional {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-align: right;
+  z-index: 10;
+}
+
+.login-opcional button {
   background-color: transparent;
   border: 1px solid white;
   color: white;
@@ -110,7 +140,6 @@ textarea, pre code {
   border-radius: 4px;
 }
 
-.login-opcional button:hover,
-.usuario-sesion button:hover {
+.login-opcional button:hover {
   background-color: rgba(255,255,255,0.2);
 }
