@@ -9,17 +9,6 @@ body {
 
 a {
   text-decoration: none;
-  color/* Tipografía y Reset */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-}
-
-a {
-  text-decoration: none;
   color: #1a237e;
 }
 
@@ -61,29 +50,7 @@ a {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Login opcional en esquina superior */
-.login-opcional {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  text-align: right;
-  z-index: 10;
-}
-
-.login-opcional button {
-  background-color: transparent;
-  border: 1px solid white;
-  color: white;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.login-opcional button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Contenido principal */
+/* Tarjetas y contenido */
 main.contenido-principal {
   padding: 2rem;
   max-width: 1000px;
@@ -94,7 +61,7 @@ main.contenido-principal {
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -113,7 +80,7 @@ footer.pie {
   margin-top: 2rem;
 }
 
-/* Botones */
+/* Botones generales */
 button {
   background-color: #1976d2;
   color: white;
@@ -128,11 +95,8 @@ button:hover {
   background-color: #0d47a1;
 }
 
-/* Campos y áreas de código */
-textarea,
-pre code,
-input[type="text"],
-input[type="password"] {
+/* Área de código y entrada */
+textarea, pre code, input[type="text"], input[type="password"] {
   width: 100%;
   padding: 0.6rem;
   border: 1px solid #ccc;
@@ -142,7 +106,7 @@ input[type="password"] {
   margin-top: 0.5rem;
 }
 
-/* Popup de login */
+/* Popup login */
 .popup {
   position: fixed;
   top: 30%;
@@ -152,9 +116,31 @@ input[type="password"] {
   padding: 1.5rem;
   border: 2px solid #000;
   z-index: 1000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .oculto {
   display: none;
 }
+
+/* Login opcional en header */
+.login-opcional {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-align: right;
+  z-index: 10;
+}
+
+.login-opcional button {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+
+.login-opcional button:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
