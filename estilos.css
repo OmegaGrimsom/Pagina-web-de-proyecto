@@ -1,4 +1,4 @@
-/* Tipografía y Reset */
+/* RESET Y TIPOGRAFÍA */
 body {
   margin: 0;
   padding: 0;
@@ -9,69 +9,57 @@ body {
 
 a {
   text-decoration: none;
+  color: #0d47a1;
+}
+
+h1, h2 {
   color: #1a237e;
 }
 
-/* Encabezado */
+main {
+  padding: 2rem;
+}
+
+/* ENCABEZADO */
 .encabezado {
   background-color: #1a237e;
   color: white;
   padding: 1rem 2rem;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  flex-wrap: wrap;
 }
 
 .encabezado h1 {
   margin: 0;
   font-size: 1.8rem;
-  flex: 1 1 100%;
 }
 
-/* Navegación */
 .navegacion {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
-  flex: 1 1 100%;
 }
 
 .navegacion a {
   color: white;
   font-weight: 500;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
 }
 
-.navegacion a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Tarjetas y contenido */
-main.contenido-principal {
-  padding: 2rem;
-  max-width: 1000px;
-  margin: auto;
-}
-
+/* TARJETAS */
 .tarjeta {
   background-color: white;
-  border: 1px solid #ddd;
+  border: 1px solid #dcdcdc;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-ul {
-  padding-left: 1.2rem;
-}
-
-/* Pie de página */
-footer.pie {
+/* PIE DE PÁGINA */
+.pie {
   background-color: #1a237e;
   color: white;
   text-align: center;
@@ -80,7 +68,7 @@ footer.pie {
   margin-top: 2rem;
 }
 
-/* Botones generales */
+/* BOTONES */
 button {
   background-color: #1976d2;
   color: white;
@@ -95,44 +83,26 @@ button:hover {
   background-color: #0d47a1;
 }
 
-/* Área de código y entrada */
-textarea, pre code, input[type="text"], input[type="password"] {
+/* ÁREA DE CÓDIGO */
+textarea, pre code {
   width: 100%;
-  padding: 0.6rem;
+  min-height: 120px;
+  padding: 0.75rem;
   border: 1px solid #ccc;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
   border-radius: 4px;
-  font-family: monospace;
-  background-color: #f4f4f4;
+  background-color: #f5f5f5;
+}
+
+/* SESIÓN Y PERFIL */
+.login-opcional, .usuario-sesion {
+  font-size: 0.9rem;
   margin-top: 0.5rem;
 }
 
-/* Popup login */
-.popup {
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  background-color: white;
-  padding: 1.5rem;
-  border: 2px solid #000;
-  z-index: 1000;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-.oculto {
-  display: none;
-}
-
-/* Login opcional en header */
-.login-opcional {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  text-align: right;
-  z-index: 10;
-}
-
-.login-opcional button {
+.login-opcional button,
+.usuario-sesion button {
   background-color: transparent;
   border: 1px solid white;
   color: white;
@@ -140,7 +110,7 @@ textarea, pre code, input[type="text"], input[type="password"] {
   border-radius: 4px;
 }
 
-.login-opcional button:hover {
+.login-opcional button:hover,
+.usuario-sesion button:hover {
   background-color: rgba(255,255,255,0.2);
 }
-
