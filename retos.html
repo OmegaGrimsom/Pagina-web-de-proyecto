@@ -18,12 +18,8 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
-      <a href="perfil.html">Perfil</a>
+      <a href="trivia.html">Trivia</a> <!-- 🔥 Nuevo botón -->
     </nav>
-    <div class="usuario-sesion" id="usuario-sesion">
-      <span id="nombre-usuario">👤</span>
-      <button onclick="cerrarSesion()">Cerrar sesión</button>
-    </div>
   </header>
 
   <main class="contenido-principal">
@@ -31,35 +27,35 @@
     <section class="tarjeta">
       <h2>🔍 Reto 1: Inversión de texto</h2>
       <p>Escribe un programa que invierta el texto ingresado por el usuario.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <textarea id="reto1" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(1)">Marcar como completado</button>
     </section>
 
     <section class="tarjeta">
       <h2>🧮 Reto 2: Suma de los primeros 100 números</h2>
       <p>Escribe un programa que calcule la suma de los números del 1 al 100.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <textarea id="reto2" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(2)">Marcar como completado</button>
     </section>
 
     <section class="tarjeta">
       <h2>🔢 Reto 3: Números primos</h2>
       <p>Escribe una función que diga si un número es primo o no.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <textarea id="reto3" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(3)">Marcar como completado</button>
     </section>
 
     <section class="tarjeta">
       <h2>📦 Reto 4: Arreglo al revés</h2>
       <p>Crea un arreglo y luego genera uno nuevo con los elementos en orden inverso.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <textarea id="reto4" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(4)">Marcar como completado</button>
     </section>
 
     <section class="tarjeta">
       <h2>📆 Reto 5: Edad exacta</h2>
       <p>Pide al usuario su año de nacimiento y muestra cuántos años tiene.</p>
-      <textarea placeholder="Escribe tu código aquí..."></textarea>
+      <textarea id="reto5" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(5)">Marcar como completado</button>
     </section>
 
@@ -71,36 +67,45 @@
 
   <script>
     const usuario = localStorage.getItem("usuarioActual");
-    const nombreUsuario = document.getElementById("nombre-usuario");
-    const seccionUsuario = document.getElementById("usuario-sesion");
-
-    if (usuario) {
-      nombreUsuario.textContent = `👤 ${usuario}`;
-    } else {
-      // Mostrar botón de login si no hay usuario
-      seccionUsuario.innerHTML = `<a href="login.html"><button>Iniciar sesión</button></a>`;
-    }
 
     function marcarReto(numero) {
-      if (usuario) {
-        localStorage.setItem(`${usuario}_reto${numero}`, "true");
-        alert(`✅ ¡Reto ${numero} marcado como completado!`);
-      } else {
-        alert("⚠️ Debes iniciar sesión para guardar tu progreso.");
+      const clave = usuario ? `${usuario}_reto${numero}` : `reto${numero}`;
+      localStorage.setItem(clave, "true");
+      alert(`✅ ¡Reto ${numero} marcado como completado!`);
+      actualizarRango();
+    }
+
+    function obtenerProgreso(clave, total) {
+      let completados = 0;
+      for (let i = 1; i <= total; i++) {
+        const claveGuardada = usuario ? `${usuario}_${clave}${i}` : `${clave}${i}`;
+        if (localStorage.getItem(claveGuardada) === "true") completados++;
       }
+      return completados;
     }
 
-    function cerrarSesion() {
-      localStorage.removeItem("usuarioActual");
-      localStorage.removeItem("sesionIniciada");
-      localStorage.removeItem("nombreSesion");
-      window.location.href = "index.html";
+    function actualizarRango() {
+      const ejerciciosTotales = 7; // ajusta según tus ejercicios
+      const retosTotales = 5;
+      const triviaTotales = 10;
+
+      const ejerciciosCompletados = obtenerProgreso("ejercicio", ejerciciosTotales);
+      const retosCompletados = obtenerProgreso("reto", retosTotales);
+      const triviaCompletada = obtenerProgreso("trivia", triviaTotales);
+
+      const total = ejerciciosCompletados + retosCompletados + triviaCompletada;
+
+      let rango = "Principiante";
+      if (total >= 5) rango = "Aprendiz";
+      if (total >= 10) rango = "Intermedio";
+      if (total >= 15) rango = "Avanzado";
+      if (total >= 20) rango = "¡Maestro! 🎉";
+
+      console.log(`Tu rango actual: ${rango}`);
     }
+
+    actualizarRango();
   </script>
-
-</body>
-</html>
-
 
 </body>
 </html>
