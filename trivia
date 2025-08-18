@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Trivia de Programación</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .pregunta {
+      background: white;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #resultado {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 20px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Trivia de Programación - Nivel Básico</h1>
+
+  <!-- Preguntas -->
+  <div class="pregunta">
+    <p>1. ¿Qué palabra se usa para declarar una variable en JavaScript?</p>
+    <button onclick="verificarRespuesta(1, 'var')">A) var</button>
+    <button onclick="verificarRespuesta(1, 'int')">B) int</button>
+    <button onclick="verificarRespuesta(1, 'variable')">C) variable</button>
+  </div>
+
+  <div class="pregunta">
+    <p>2. ¿Cuál es el símbolo para el operador 'igual a' en JavaScript?</p>
+    <button onclick="verificarRespuesta(2, '=')">A) =</button>
+    <button onclick="verificarRespuesta(2, '==')">B) ==</button>
+    <button onclick="verificarRespuesta(2, '===')">C) ===</button>
+  </div>
+
+  <div class="pregunta">
+    <p>3. ¿Qué se usa para repetir un bloque de código varias veces?</p>
+    <button onclick="verificarRespuesta(3, 'for')">A) for</button>
+    <button onclick="verificarRespuesta(3, 'if')">B) if</button>
+    <button onclick="verificarRespuesta(3, 'console.log')">C) console.log</button>
+  </div>
+
+  <div class="pregunta">
+    <p>4. ¿Cuál de estos NO es un tipo de dato en JavaScript?</p>
+    <button onclick="verificarRespuesta(4, 'string')">A) string</button>
+    <button onclick="verificarRespuesta(4, 'boolean')">B) boolean</button>
+    <button onclick="verificarRespuesta(4, 'real')">C) real</button>
+  </div>
+
+  <div class="pregunta">
+    <p>5. ¿Cómo se escribe un comentario de una sola línea en JavaScript?</p>
+    <button onclick="verificarRespuesta(5, '// comentario')">A) // comentario</button>
+    <button onclick="verificarRespuesta(5, '# comentario')">B) # comentario</button>
+    <button onclick="verificarRespuesta(5, '<!-- comentario -->')">C) &lt;!-- comentario --&gt;</button>
+  </div>
+
+  <div class="pregunta">
+    <p>6. ¿Cuál es el resultado de 10 % 3 en JavaScript?</p>
+    <button onclick="verificarRespuesta(6, '1')">A) 1</button>
+    <button onclick="verificarRespuesta(6, '3')">B) 3</button>
+    <button onclick="verificarRespuesta(6, '0')">C) 0</button>
+  </div>
+
+  <div class="pregunta">
+    <p>7. ¿Qué método se usa para mostrar mensajes en la consola?</p>
+    <button onclick="verificarRespuesta(7, 'console.log')">A) console.log</button>
+    <button onclick="verificarRespuesta(7, 'print')">B) print</button>
+    <button onclick="verificarRespuesta(7, 'alert')">C) alert</button>
+  </div>
+
+  <div class="pregunta">
+    <p>8. ¿Qué palabra clave detiene un bucle inmediatamente?</p>
+    <button onclick="verificarRespuesta(8, 'stop')">A) stop</button>
+    <button onclick="verificarRespuesta(8, 'break')">B) break</button>
+    <button onclick="verificarRespuesta(8, 'exit')">C) exit</button>
+  </div>
+
+  <div class="pregunta">
+    <p>9. ¿Cuál de los siguientes valores es un booleano?</p>
+    <button onclick="verificarRespuesta(9, 'true')">A) true</button>
+    <button onclick="verificarRespuesta(9, '123')">B) 123</button>
+    <button onclick="verificarRespuesta(9, '"hola"')">C) "hola"</button>
+  </div>
+
+  <div class="pregunta">
+    <p>10. ¿Qué estructura se usa para tomar decisiones en el código?</p>
+    <button onclick="verificarRespuesta(10, 'if')">A) if</button>
+    <button onclick="verificarRespuesta(10, 'for')">B) for</button>
+    <button onclick="verificarRespuesta(10, 'console.log')">C) console.log</button>
+  </div>
+
+  <div class="pregunta">
+    <p>11. ¿Qué devuelve <code>typeof "Hola"</code> en JavaScript?</p>
+    <button onclick="verificarRespuesta(11, 'string')">A) string</button>
+    <button onclick="verificarRespuesta(11, 'text')">B) text</button>
+    <button onclick="verificarRespuesta(11, 'char')">C) char</button>
+  </div>
+
+  <div class="pregunta">
+    <p>12. ¿Cómo se representa una lista en JavaScript?</p>
+    <button onclick="verificarRespuesta(12, '[]')">A) []</button>
+    <button onclick="verificarRespuesta(12, '{}')">B) {}</button>
+    <button onclick="verificarRespuesta(12, '()')">C) ()</button>
+  </div>
+
+  <div class="pregunta">
+    <p>13. ¿Qué operador se usa para concatenar (unir) textos?</p>
+    <button onclick="verificarRespuesta(13, '+')">A) +</button>
+    <button onclick="verificarRespuesta(13, '*')">B) *</button>
+    <button onclick="verificarRespuesta(13, '&')">C) &</button>
+  </div>
+
+  <div class="pregunta">
+    <p>14. ¿Cuál de los siguientes es un bucle válido en JavaScript?</p>
+    <button onclick="verificarRespuesta(14, 'for')">A) for</button>
+    <button onclick="verificarRespuesta(14, 'repeat')">B) repeat</button>
+    <button onclick="verificarRespuesta(14, 'loop')">C) loop</button>
+  </div>
+
+  <div class="pregunta">
+    <p>15. ¿Qué palabra clave define una función en JavaScript?</p>
+    <button onclick="verificarRespuesta(15, 'function')">A) function</button>
+    <button onclick="verificarRespuesta(15, 'func')">B) func</button>
+    <button onclick="verificarRespuesta(15, 'method')">C) method</button>
+  </div>
+
+  <!-- Resultado final -->
+  <p id="resultado"></p>
+
+  <script>
+    let respuestasCorrectas = {
+      1: "var",
+      2: "==",
+      3: "for",
+      4: "real",
+      5: "// comentario",
+      6: "1",
+      7: "console.log",
+      8: "break",
+      9: "true",
+      10: "if",
+      11: "string",
+      12: "[]",
+      13: "+",
+      14: "for",
+      15: "function"
+    };
+
+    let puntos = 0;
+    let contestadas = 0;
+
+    function verificarRespuesta(numPregunta, respuesta) {
+      contestadas++;
+
+      if (respuesta === respuestasCorrectas[numPregunta]) {
+        puntos++;
+      }
+
+      if (contestadas === Object.keys(respuestasCorrectas).length) {
+        document.getElementById("resultado").textContent = 
+          "🎉 Has conseguido " + puntos + " de " + contestadas + " puntos.";
+      }
+    }
+  </script>
+
+</body>
+</html>
