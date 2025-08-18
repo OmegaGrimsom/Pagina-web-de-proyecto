@@ -18,12 +18,8 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
-      <a href="perfil.html">Perfil</a>
+      <a href="trivia.html">Trivia</a> <!-- 🔥 Nuevo -->
     </nav>
-    <div class="usuario-sesion">
-      <span id="nombre-usuario">👤</span>
-      <button id="boton-sesion">Iniciar sesión</button>
-    </div>
   </header>
 
   <main class="contenido-principal">
@@ -36,6 +32,11 @@
     <section class="tarjeta">
       <h2>🏁 Retos completados</h2>
       <p id="retos-completados">Cargando...</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>🎯 Trivia completada</h2>
+      <p id="trivia-completada">Cargando...</p>
     </section>
 
     <section class="tarjeta">
@@ -56,18 +57,6 @@
 
   <script>
     const usuario = localStorage.getItem("usuarioActual");
-    const nombreUsuarioSpan = document.getElementById("nombre-usuario");
-    const botonSesion = document.getElementById("boton-sesion");
-
-    if (usuario) {
-      nombreUsuarioSpan.textContent = `👤 ${usuario}`;
-      botonSesion.textContent = "Cerrar sesión";
-      botonSesion.onclick = cerrarSesion;
-    } else {
-      nombreUsuarioSpan.textContent = "👤 Invitado";
-      botonSesion.textContent = "Iniciar sesión";
-      botonSesion.onclick = () => window.location.href = "login.html";
-    }
 
     function obtenerProgreso(clave, total) {
       let completados = 0;
@@ -81,27 +70,34 @@
     }
 
     function actualizarProgreso() {
-      const ejerciciosTotales = 5;
-      const retosTotales = 5;
+      const ejerciciosTotales = 7; // ajusta según tus ejercicios
+      const retosTotales = 5;      // ajusta según tus retos
+      const triviaTotales = 10;    // número total de preguntas de trivia
 
       const ejerciciosCompletados = obtenerProgreso("ejercicio", ejerciciosTotales);
       const retosCompletados = obtenerProgreso("reto", retosTotales);
+      const triviaCompletada = obtenerProgreso("trivia", triviaTotales);
 
       document.getElementById("ejercicios-completados").textContent = `${ejerciciosCompletados} de ${ejerciciosTotales}`;
       document.getElementById("retos-completados").textContent = `${retosCompletados} de ${retosTotales}`;
+      document.getElementById("trivia-completada").textContent = `${triviaCompletada} de ${triviaTotales}`;
 
-      const total = ejerciciosCompletados + retosCompletados;
+      const total = ejerciciosCompletados + retosCompletados + triviaCompletada;
+
       let nivel = "Principiante";
-      if (total >= 3) nivel = "Aprendiz";
-      if (total >= 7) nivel = "Intermedio";
-      if (total === 10) nivel = "¡Maestro! 🎉";
+      if (total >= 5) nivel = "Aprendiz";
+      if (total >= 10) nivel = "Intermedio";
+      if (total >= 15) nivel = "Avanzado";
+      if (total >= 20) nivel = "¡Maestro! 🎉";
 
       document.getElementById("nivel-actual").textContent = nivel;
     }
 
     function reiniciarProgreso() {
-      const ejerciciosTotales = 5;
+      const ejerciciosTotales = 7;
       const retosTotales = 5;
+      const triviaTotales = 10;
+
       for (let i = 1; i <= ejerciciosTotales; i++) {
         const clave = usuario ? `${usuario}_ejercicio${i}` : `ejercicio${i}`;
         localStorage.removeItem(clave);
@@ -110,13 +106,13 @@
         const clave = usuario ? `${usuario}_reto${i}` : `reto${i}`;
         localStorage.removeItem(clave);
       }
+      for (let i = 1; i <= triviaTotales; i++) {
+        const clave = usuario ? `${usuario}_trivia${i}` : `trivia${i}`;
+        localStorage.removeItem(clave);
+      }
+
       alert("✅ Tu progreso ha sido reiniciado.");
       actualizarProgreso();
-    }
-
-    function cerrarSesion() {
-      localStorage.removeItem("usuarioActual");
-      window.location.reload();
     }
 
     actualizarProgreso();
