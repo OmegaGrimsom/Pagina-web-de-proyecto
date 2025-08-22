@@ -5,6 +5,12 @@
   <title>Retos - Aprende Programación</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="estilos.css">
+  <style>
+    .ayuda {
+      color: #d35400;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
 
@@ -18,7 +24,7 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
-      <a href="trivia.html">Trivia</a> <!-- 🔥 Nuevo botón -->
+      <a href="trivia.html">Trivia</a>
     </nav>
   </header>
 
@@ -29,6 +35,10 @@
       <p>Escribe un programa que invierta el texto ingresado por el usuario.</p>
       <textarea id="reto1" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(1)">Marcar como completado</button>
+      <button onclick="mostrarAyuda(1)">🛈 Ayuda</button>
+      <p id="ayuda1" class="ayuda" style="display:none;">
+        Piensa en cómo puedes recorrer la cadena desde el final hacia el inicio.
+      </p>
     </section>
 
     <section class="tarjeta">
@@ -36,6 +46,10 @@
       <p>Escribe un programa que calcule la suma de los números del 1 al 100.</p>
       <textarea id="reto2" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(2)">Marcar como completado</button>
+      <button onclick="mostrarAyuda(2)">🛈 Ayuda</button>
+      <p id="ayuda2" class="ayuda" style="display:none;">
+        Usa un bucle para ir sumando los números desde 1 hasta 100.
+      </p>
     </section>
 
     <section class="tarjeta">
@@ -43,6 +57,10 @@
       <p>Escribe una función que diga si un número es primo o no.</p>
       <textarea id="reto3" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(3)">Marcar como completado</button>
+      <button onclick="mostrarAyuda(3)">🛈 Ayuda</button>
+      <p id="ayuda3" class="ayuda" style="display:none;">
+        Un número es primo si solo es divisible por 1 y por sí mismo.
+      </p>
     </section>
 
     <section class="tarjeta">
@@ -50,6 +68,10 @@
       <p>Crea un arreglo y luego genera uno nuevo con los elementos en orden inverso.</p>
       <textarea id="reto4" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(4)">Marcar como completado</button>
+      <button onclick="mostrarAyuda(4)">🛈 Ayuda</button>
+      <p id="ayuda4" class="ayuda" style="display:none;">
+        Piensa en usar un bucle que recorra el arreglo desde el último elemento hasta el primero.
+      </p>
     </section>
 
     <section class="tarjeta">
@@ -57,6 +79,10 @@
       <p>Pide al usuario su año de nacimiento y muestra cuántos años tiene.</p>
       <textarea id="reto5" placeholder="Escribe tu código aquí..."></textarea>
       <button onclick="marcarReto(5)">Marcar como completado</button>
+      <button onclick="mostrarAyuda(5)">🛈 Ayuda</button>
+      <p id="ayuda5" class="ayuda" style="display:none;">
+        Obtén el año actual con <code>new Date().getFullYear()</code> y réstale el año de nacimiento.
+      </p>
     </section>
 
   </main>
@@ -73,6 +99,11 @@
       localStorage.setItem(clave, "true");
       alert(`✅ ¡Reto ${numero} marcado como completado!`);
       actualizarRango();
+    }
+
+    function mostrarAyuda(numReto) {
+      const ayuda = document.getElementById(`ayuda${numReto}`);
+      ayuda.style.display = ayuda.style.display === "none" ? "block" : "none";
     }
 
     function obtenerProgreso(clave, total) {
