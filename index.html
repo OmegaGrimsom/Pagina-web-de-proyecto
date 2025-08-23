@@ -2,109 +2,133 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio - Aprende Programación</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="estilos.css"> <!-- Aquí irá el nuevo CSS formal -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #333;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      text-align: center;
+    }
+    nav a:hover {
+      background: #575757;
+    }
+    section {
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
+    /* Estilo para los minijuegos */
+    .game {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      background: white;
+      text-align: center;
+    }
+    .game button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .game button:hover {
+      background: #45a049;
+    }
+  </style>
 </head>
 <body>
-
-  <header class="encabezado">
-    <h1>🚀 Aprende Programación</h1>
-    <nav class="navegacion">
-      <a href="index.html">Inicio</a>
-      <a href="teoria.html">Teoría</a>
-      <a href="lenguajes.html">Lenguajes</a>
-      <a href="ejercicios.html">Ejercicios</a>
-      <a href="retos.html">Retos</a>
-      <a href="progreso.html">Progreso</a>
-      <a href="tutoriales.html">Tutoriales</a>
-      <a href="trivia.html">Trivia</a> <!-- 👈 Nuevo botón -->
-    </nav>
-    <div class="login-opcional">
-      <button id="btn-login-toggle">👤 Iniciar sesión</button>
-      <span id="nombre-usuario"></span>
-    </div>
+  <header>
+    <h1>Bienvenido a Aprende Programación</h1>
   </header>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="teoria.html">Teoría</a>
+    <a href="lenguajes.html">Lenguajes</a>
+    <a href="ejercicios.html">Ejercicios</a>
+    <a href="retos.html">Retos</a>
+    <a href="progreso.html">Progreso</a>
+    <a href="tutoriales.html">Tutoriales</a>
+    <a href="glosario.html">Glosario</a>
+    <a href="#minijuegos">Minijuegos</a> <!-- 🔥 Nuevo enlace -->
+  </nav>
 
-  <main class="contenido-principal">
-    <section class="tarjeta">
-      <h2>🎓 Bienvenido</h2>
-      <p>Este sitio está hecho para ayudarte a aprender programación desde cero. Aquí encontrarás teoría, ejemplos, ejercicios, retos y tutoriales paso a paso.</p>
-    </section>
+  <section>
+    <h2>Aprende a programar de forma divertida e interactiva</h2>
+    <p>Explora teoría, ejercicios, retos y tutoriales que harán que aprendas mientras te diviertes.</p>
+  </section>
 
-    <section class="tarjeta">
-      <h2>👩‍💻 ¿Qué aprenderás?</h2>
-      <ul>
-        <li>📘 Fundamentos de programación</li>
-        <li>🌐 HTML, CSS y JavaScript</li>
-        <li>🧩 Cómo resolver problemas con código</li>
-        <li>🛠️ Crear tus propias páginas web</li>
-      </ul>
-    </section>
+  <!-- 🔥 NUEVO APARTADO DE MINIJUEGOS -->
+  <section id="minijuegos">
+    <h2>🎮 Minijuegos</h2>
+    <p>Practica programación y lógica jugando.</p>
 
-    <section class="tarjeta">
-      <h2>💡 ¿Por qué aprender programación?</h2>
-      <p>La programación te ayuda a pensar de forma lógica, resolver problemas y crear tus propios proyectos digitales. ¡Es divertido y útil para tu futuro!</p>
-    </section>
-  </main>
+    <!-- Juego 1: Adivina el número -->
+    <div class="game">
+      <h3>🔢 Adivina el número</h3>
+      <p>Piensa un número entre 1 y 10 e intenta adivinarlo.</p>
+      <input type="number" id="guess" placeholder="Escribe tu número">
+      <button onclick="checkNumber()">Probar</button>
+      <p id="result"></p>
+    </div>
 
-  <footer class="pie">
-    <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
-  </footer>
-
-  <!-- POPUP LOGIN -->
-  <div id="popup-login" class="popup oculto">
-    <h2>Iniciar sesión</h2>
-    <label>Nombre:<br><input type="text" id="login-nombre" class="campo-texto"></label><br>
-    <label>Contraseña:<br><input type="password" id="login-clave" class="campo-texto"></label><br>
-    <button onclick="iniciarSesion()">Entrar</button>
-    <button onclick="cerrarPopup()">Cancelar</button>
-  </div>
+    <!-- Juego 2: Quiz rápido -->
+    <div class="game">
+      <h3>❓ Quiz de Programación</h3>
+      <p>¿Qué significa HTML?</p>
+      <button onclick="quizAnswer('a')">A) HyperText Markup Language</button>
+      <button onclick="quizAnswer('b')">B) High Tech Machine Learning</button>
+      <button onclick="quizAnswer('c')">C) Home Tool Markup Level</button>
+      <p id="quizResult"></p>
+    </div>
+  </section>
 
   <script>
-    function mostrarPopup() {
-      document.getElementById("popup-login").classList.remove("oculto");
-    }
-
-    function cerrarPopup() {
-      document.getElementById("popup-login").classList.add("oculto");
-    }
-
-    document.getElementById("btn-login-toggle").addEventListener("click", mostrarPopup);
-
-    function iniciarSesion() {
-      const nombre = document.getElementById("login-nombre").value;
-      const clave = document.getElementById("login-clave").value;
-      const nombreGuardado = localStorage.getItem("usuarioNombre");
-      const claveGuardada = localStorage.getItem("usuarioClave");
-
-      if (nombre === nombreGuardado && clave === claveGuardada) {
-        localStorage.setItem("sesionIniciada", "true");
-        localStorage.setItem("nombreSesion", nombre);
-        mostrarNombreUsuario();
-        cerrarPopup();
+    // Juego 1: Adivina el número
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
+    function checkNumber() {
+      const guess = document.getElementById("guess").value;
+      const result = document.getElementById("result");
+      if (guess == secretNumber) {
+        result.textContent = "🎉 ¡Correcto! El número era " + secretNumber;
       } else {
-        alert("Nombre o contraseña incorrectos.");
+        result.textContent = "❌ Intenta de nuevo";
       }
     }
 
-    function mostrarNombreUsuario() {
-      const nombre = localStorage.getItem("nombreSesion");
-      const span = document.getElementById("nombre-usuario");
-      if (nombre) {
-        span.textContent = `Hola, ${nombre} 👋`;
+    // Juego 2: Quiz
+    function quizAnswer(option) {
+      const quizResult = document.getElementById("quizResult");
+      if (option === "a") {
+        quizResult.textContent = "✅ ¡Correcto! HTML significa HyperText Markup Language.";
       } else {
-        span.textContent = "";
+        quizResult.textContent = "❌ Incorrecto, intenta otra vez.";
       }
     }
-
-    function revisarSesion() {
-      if (localStorage.getItem("sesionIniciada") === "true") {
-        mostrarNombreUsuario();
-      }
-    }
-
-    revisarSesion();
   </script>
 </body>
 </html>
