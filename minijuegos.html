@@ -2,147 +2,108 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minijuegos</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 0; }
-    header { background: #0077b6; color: white; padding: 15px; text-align: center; }
-    nav { background: #023e8a; padding: 10px; text-align: center; }
-    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    .container { max-width: 900px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
-    h2 { color: #0077b6; }
-    .game { border: 2px solid #0077b6; padding: 15px; border-radius: 8px; margin: 20px 0; }
-    button { background: #0077b6; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
-    button:hover { background: #023e8a; }
-    input { padding: 8px; margin-top: 10px; }
-  </style>
+  <title>Minijuegos - Aprende Programación</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-  <header>
-    <h1>Minijuegos de Programación</h1>
+
+  <header class="encabezado">
+    <h1>🎮 Minijuegos</h1>
+    <nav class="navegacion">
+      <a href="index.html">Inicio</a>
+      <a href="teoria.html">Teoría</a>
+      <a href="lenguajes.html">Lenguajes</a>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="retos.html">Retos</a>
+      <a href="progreso.html">Progreso</a>
+      <a href="tutoriales.html">Tutoriales</a>
+      <a href="trivia.html">Trivia</a>
+      <a href="minijuegos.html">Minijuegos</a>
+    </nav>
   </header>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="teoria.html">Teoría</a>
-    <a href="lenguajes.html">Lenguajes</a>
-    <a href="ejercicios.html">Ejercicios</a>
-    <a href="retos.html">Retos</a>
-    <a href="progreso.html">Progreso</a>
-    <a href="tutoriales.html">Tutoriales</a>
-    <a href="glosario.html">Glosario</a>
-    <a href="minijuegos.html">Minijuegos</a> <!-- 🔥 Ya aparece aquí -->
-    <a href="perfil.html">Mi Perfil</a>
-  </nav>
-  
-  <div class="container">
-    <h2>🎮 Bienvenido a los Minijuegos</h2>
-    <p>Elige un juego y pon a prueba tu lógica y memoria.</p>
+
+  <main class="contenido-principal">
 
     <!-- Juego 1: Adivina el número -->
-    <div class="game">
-      <h3>🔢 Adivina el número</h3>
-      <p>Intenta adivinar un número del 1 al 20.</p>
-      <input type="number" id="guess" placeholder="Escribe tu número">
-      <button onclick="checkGuess()">Probar</button>
-      <p id="result"></p>
-    </div>
+    <section class="tarjeta">
+      <h2>🔢 Adivina el número</h2>
+      <p>Adivina un número del 1 al 10:</p>
+      <input type="number" id="numeroUsuario" min="1" max="10">
+      <button onclick="adivinar()">Probar</button>
+      <p id="resultadoNumero"></p>
+    </section>
 
-    <!-- Juego 2: Pregunta Rápida -->
-    <div class="game">
-      <h3>❓ Pregunta rápida</h3>
-      <p>¿Cuánto es <span id="q1"></span>?</p>
-      <input type="number" id="answer1" placeholder="Tu respuesta">
-      <button onclick="checkQuestion()">Responder</button>
-      <p id="result1"></p>
-    </div>
+    <!-- Juego 2: Piedra, papel o tijera -->
+    <section class="tarjeta">
+      <h2>✊✋✌️ Piedra, papel o tijera</h2>
+      <button onclick="jugar('piedra')">Piedra</button>
+      <button onclick="jugar('papel')">Papel</button>
+      <button onclick="jugar('tijera')">Tijera</button>
+      <p id="resultadoJuego"></p>
+    </section>
 
-    <!-- Juego 3: Juego de memoria -->
-    <div class="game">
-      <h3>🧠 Juego de memoria</h3>
-      <p>Recuerda esta palabra: <b id="word"></b></p>
-      <button onclick="askWord()">Ya memoricé</button>
-      <div id="memoryGame" style="display:none;">
-        <input type="text" id="memoryInput" placeholder="Escribe la palabra">
-        <button onclick="checkMemory()">Comprobar</button>
-        <p id="memoryResult"></p>
-      </div>
-    </div>
+    <!-- Juego 3: Juego de memoria simple -->
+    <section class="tarjeta">
+      <h2>🧠 Juego de memoria</h2>
+      <p>Haz clic en los botones e intenta recordar el número:</p>
+      <button onclick="mostrarNumero()">Mostrar número</button>
+      <button onclick="adivinarNumeroMemoria()">Adivinar</button>
+      <p id="resultadoMemoria"></p>
+    </section>
 
-    <!-- Juego 4: Piedra, papel o tijeras -->
-    <div class="game">
-      <h3>✊✋✌️ Piedra, papel o tijeras</h3>
-      <button onclick="playRPS('piedra')">Piedra</button>
-      <button onclick="playRPS('papel')">Papel</button>
-      <button onclick="playRPS('tijeras')">Tijeras</button>
-      <p id="rpsResult"></p>
-    </div>
-  </div>
+  </main>
+
+  <footer class="pie">
+    <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
+  </footer>
 
   <script>
     // Juego 1: Adivina el número
-    let secret = Math.floor(Math.random() * 20) + 1;
-    function checkGuess() {
-      let guess = document.getElementById("guess").value;
-      let result = document.getElementById("result");
-      if (guess == secret) {
-        result.textContent = "🎉 ¡Correcto! Adivinaste el número.";
-      } else if (guess < secret) {
-        result.textContent = "El número es más grande.";
+    const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+    function adivinar() {
+      const num = document.getElementById("numeroUsuario").value;
+      const resultado = document.getElementById("resultadoNumero");
+      if (num == numeroSecreto) {
+        resultado.textContent = "🎉 ¡Correcto!";
       } else {
-        result.textContent = "El número es más pequeño.";
+        resultado.textContent = "❌ Intenta otra vez.";
       }
     }
 
-    // Juego 2: Pregunta rápida
-    let a = Math.floor(Math.random() * 10);
-    let b = Math.floor(Math.random() * 10);
-    document.getElementById("q1").textContent = a + " + " + b;
-    function checkQuestion() {
-      let ans = document.getElementById("answer1").value;
-      let result1 = document.getElementById("result1");
-      if (ans == a + b) {
-        result1.textContent = "✅ Correcto.";
-      } else {
-        result1.textContent = "❌ Incorrecto.";
-      }
-    }
-
-    // Juego 3: Juego de memoria
-    let words = ["JavaScript", "Variable", "Bucle", "Constante", "Array"];
-    let chosen = words[Math.floor(Math.random() * words.length)];
-    document.getElementById("word").textContent = chosen;
-    function askWord() {
-      document.getElementById("memoryGame").style.display = "block";
-    }
-    function checkMemory() {
-      let input = document.getElementById("memoryInput").value;
-      let res = document.getElementById("memoryResult");
-      if (input === chosen) {
-        res.textContent = "🎉 ¡Correcto!";
-      } else {
-        res.textContent = "❌ Intenta de nuevo.";
-      }
-    }
-
-    // Juego 4: Piedra, papel o tijeras
-    function playRPS(choice) {
-      let options = ["piedra", "papel", "tijeras"];
-      let cpu = options[Math.floor(Math.random() * 3)];
-      let result = document.getElementById("rpsResult");
-      if (choice === cpu) {
-        result.textContent = "🤝 Empate, ambos eligieron " + choice;
+    // Juego 2: Piedra, papel o tijera
+    function jugar(eleccionUsuario) {
+      const opciones = ["piedra", "papel", "tijera"];
+      const eleccionCompu = opciones[Math.floor(Math.random() * 3)];
+      let resultado = "";
+      if (eleccionUsuario === eleccionCompu) {
+        resultado = "🤝 Empate. Ambos eligieron " + eleccionUsuario;
       } else if (
-        (choice === "piedra" && cpu === "tijeras") ||
-        (choice === "papel" && cpu === "piedra") ||
-        (choice === "tijeras" && cpu === "papel")
+        (eleccionUsuario === "piedra" && eleccionCompu === "tijera") ||
+        (eleccionUsuario === "papel" && eleccionCompu === "piedra") ||
+        (eleccionUsuario === "tijera" && eleccionCompu === "papel")
       ) {
-        result.textContent = "🎉 Ganaste, la computadora eligió " + cpu;
+        resultado = "🎉 ¡Ganaste! La compu eligió " + eleccionCompu;
       } else {
-        result.textContent = "❌ Perdiste, la computadora eligió " + cpu;
+        resultado = "💻 Gana la compu, eligió " + eleccionCompu;
+      }
+      document.getElementById("resultadoJuego").textContent = resultado;
+    }
+
+    // Juego 3: Memoria
+    let numeroMemoria;
+    function mostrarNumero() {
+      numeroMemoria = Math.floor(Math.random() * 100);
+      alert("Recuerda este número: " + numeroMemoria);
+    }
+    function adivinarNumeroMemoria() {
+      const intento = prompt("¿Cuál era el número?");
+      if (parseInt(intento) === numeroMemoria) {
+        document.getElementById("resultadoMemoria").textContent = "🎉 ¡Correcto!";
+      } else {
+        document.getElementById("resultadoMemoria").textContent = "❌ Era " + numeroMemoria;
       }
     }
   </script>
+
 </body>
 </html>
