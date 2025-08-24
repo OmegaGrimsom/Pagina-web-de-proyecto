@@ -1,111 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Tutoriales de JavaScript - Aprende Programación</title>
-  <link rel="stylesheet" href="estilos.css">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff9f0;
-      color: #333;
-      padding: 20px;
-    }
-    nav {
-      background-color: #ff9800;
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    h1 {
-      color: #ff9800;
-    }
-    section {
-      background: white;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    pre {
-      background-color: #f5f5f5;
-      padding: 10px;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-    textarea {
-      width: 100%;
-      font-family: monospace;
-      border-radius: 5px;
-      padding: 10px;
-    }
-    button {
-      background-color: #ff9800;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    button:hover {
-      background-color: #e68900;
-    }
-  </style>
-</head>
-<body>
+<section id="tutorial-variables" class="tutorial">
+    <h2>📘 Tutorial: Variables en JavaScript</h2>
+    <p>
+        Las variables sirven para guardar información. En JavaScript puedes declararlas con 
+        <code>let</code>, <code>const</code> o <code>var</code>.  
+    </p>
+    <pre><code>let nombre = "Juan";
+console.log("Hola, " + nombre);</code></pre>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="teoria.html">Teoría</a>
-    <a href="lenguajes.html">Lenguajes</a>
-    <a href="ejercicios.html">Ejercicios</a>
-    <a href="retos.html">Retos</a>
-    <a href="progreso.html">Progreso</a>
-    <a href="tutoriales.html">Tutoriales</a>
-    <a href="trivia.html">Trivia</a>
-  </nav>
+    <div class="editor">
+        <textarea id="codeVariables">// Escribe tu código aquí
+let nombre = "Tu Nombre";
+console.log("Hola " + nombre);</textarea>
+        <br>
+        <button onclick="ejecutarCodigo('codeVariables', 'outputVariables')">Probar Código</button>
+        <div class="output" id="outputVariables"></div>
+    </div>
+</section>
 
-  <h1>Tutoriales de JavaScript</h1>
-
-  <!-- Aquí irían los tutoriales de JS (1 a 11) igual que antes -->
-  <!-- Sección para probar código -->
-  <section>
-    <h2>🧪 Prueba tu propio código</h2>
-    <p>Escribe código y pruébalo directamente aquí:</p>
-    <textarea id="codigoUsuario" rows="8"></textarea><br><br>
-    <button onclick="ejecutarCodigo()">Ejecutar código</button>
-    <h3>Resultado:</h3>
-    <pre id="resultado"></pre>
-  </section>
-
-  <script>
-    function ejecutarCodigo() {
-      const codigo = document.getElementById("codigoUsuario").value;
-      const resultado = document.getElementById("resultado");
-      try {
-        const originalLog = console.log;
-        let salida = "";
-        console.log = function(mensaje) {
-          salida += mensaje + "\n";
-        }
-        eval(codigo);
-        resultado.textContent = salida;
-        console.log = originalLog;
-      } catch (error) {
-        resultado.textContent = "Error: " + error;
-      }
+<script>
+function ejecutarCodigo(textareaId, outputId) {
+    const code = document.getElementById(textareaId).value;
+    const outputDiv = document.getElementById(outputId);
+    try {
+        const result = eval(code);
+        outputDiv.innerText = result !== undefined ? result : "✔️ Código ejecutado sin errores.";
+    } catch (error) {
+        outputDiv.innerText = "❌ Error: " + error.message;
     }
-  </script>
-
-</body>
-</html>
+}
+</script>
