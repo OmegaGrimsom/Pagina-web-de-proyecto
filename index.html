@@ -38,27 +38,6 @@
     h2 {
       color: #333;
     }
-    /* Estilo para los minijuegos */
-    .game {
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
-      background: white;
-      text-align: center;
-    }
-    .game button {
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 10px;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    .game button:hover {
-      background: #45a049;
-    }
   </style>
 </head>
 <body>
@@ -74,7 +53,7 @@
     <a href="progreso.html">Progreso</a>
     <a href="tutoriales.html">Tutoriales</a>
     <a href="glosario.html">Glosario</a>
-    <a href="#minijuegos">Minijuegos</a> <!-- 🔥 Nuevo enlace -->
+    <a href="minijuegos.html">Minijuegos</a> <!-- 👈 Ahora lleva al archivo minijuegos.html -->
   </nav>
 
   <section>
@@ -82,53 +61,5 @@
     <p>Explora teoría, ejercicios, retos y tutoriales que harán que aprendas mientras te diviertes.</p>
   </section>
 
-  <!-- 🔥 NUEVO APARTADO DE MINIJUEGOS -->
-  <section id="minijuegos">
-    <h2>🎮 Minijuegos</h2>
-    <p>Practica programación y lógica jugando.</p>
-
-    <!-- Juego 1: Adivina el número -->
-    <div class="game">
-      <h3>🔢 Adivina el número</h3>
-      <p>Piensa un número entre 1 y 10 e intenta adivinarlo.</p>
-      <input type="number" id="guess" placeholder="Escribe tu número">
-      <button onclick="checkNumber()">Probar</button>
-      <p id="result"></p>
-    </div>
-
-    <!-- Juego 2: Quiz rápido -->
-    <div class="game">
-      <h3>❓ Quiz de Programación</h3>
-      <p>¿Qué significa HTML?</p>
-      <button onclick="quizAnswer('a')">A) HyperText Markup Language</button>
-      <button onclick="quizAnswer('b')">B) High Tech Machine Learning</button>
-      <button onclick="quizAnswer('c')">C) Home Tool Markup Level</button>
-      <p id="quizResult"></p>
-    </div>
-  </section>
-
-  <script>
-    // Juego 1: Adivina el número
-    let secretNumber = Math.floor(Math.random() * 10) + 1;
-    function checkNumber() {
-      const guess = document.getElementById("guess").value;
-      const result = document.getElementById("result");
-      if (guess == secretNumber) {
-        result.textContent = "🎉 ¡Correcto! El número era " + secretNumber;
-      } else {
-        result.textContent = "❌ Intenta de nuevo";
-      }
-    }
-
-    // Juego 2: Quiz
-    function quizAnswer(option) {
-      const quizResult = document.getElementById("quizResult");
-      if (option === "a") {
-        quizResult.textContent = "✅ ¡Correcto! HTML significa HyperText Markup Language.";
-      } else {
-        quizResult.textContent = "❌ Incorrecto, intenta otra vez.";
-      }
-    }
-  </script>
 </body>
 </html>
