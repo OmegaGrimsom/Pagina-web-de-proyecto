@@ -2,68 +2,114 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minijuegos - Aprende Programación</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="estilos.css">
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:20px; background:#f0f8ff; }
-    h1 { text-align:center; color:#4CAF50; }
-    nav { display:flex; justify-content:center; margin-bottom:20px; }
-    nav a { margin:0 10px; text-decoration:none; color:#333; font-weight:bold; }
-    nav a:hover { text-decoration:underline; }
-    #busqueda { width:80%; padding:8px; margin: 0 auto 20px; display:block; border-radius:5px; border:1px solid #ccc; }
-    .juego { border:2px solid #4CAF50; border-radius:10px; padding:15px; margin:20px 0; background:#e8f5e9; }
-    button { margin-top:10px; padding:8px 12px; cursor:pointer; border:none; border-radius:6px; background:#4CAF50; color:white; font-weight:bold; }
-    button:hover { background:#45a049; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+    header.encabezado {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav.navegacion {
+      display: flex;
+      justify-content: center;
+      background: #333;
+    }
+    nav.navegacion a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      text-align: center;
+    }
+    nav.navegacion a:hover {
+      background: #575757;
+    }
+    main.contenido-principal {
+      padding: 20px;
+    }
+    .juego {
+      border: 2px solid #4CAF50;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 20px 0;
+      background: #e8f5e9;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #45a049;
+    }
   </style>
 </head>
 <body>
 
-  <h1>🎮 Minijuegos</h1>
+  <header class="encabezado">
+    <h1>🎮 Minijuegos</h1>
+    <nav class="navegacion">
+      <a href="index.html">Inicio</a>
+      <a href="teoria.html">Teoría</a>
+      <a href="lenguajes.html">Lenguajes</a>
+      <a href="ejercicios.html">Ejercicios</a>
+      <a href="retos.html">Retos</a>
+      <a href="progreso.html">Progreso</a>
+      <a href="tutoriales.html">Tutoriales</a>
+      <a href="minijuegos.html">Minijuegos</a>
+    </nav>
+  </header>
 
-  <input type="text" id="busqueda" placeholder="🔍 Buscar juego...">
+  <main class="contenido-principal">
+    <!-- 1. Número secreto -->
+    <div class="juego">
+      <h2>Adivina el número 🔢</h2>
+      <p>Intenta adivinar un número entre 1 y 10</p>
+      <input type="number" id="guess">
+      <button onclick="adivinar()">Probar</button>
+      <p id="resultado"></p>
+    </div>
 
-  <!-- Juegos -->
-  <div class="juego" data-nombre="Número secreto">
-    <h2>Adivina el número 🔢</h2>
-    <p>Intenta adivinar un número entre 1 y 10</p>
-    <input type="number" id="guess">
-    <button onclick="adivinar()">Probar</button>
-    <p id="resultado"></p>
-  </div>
+    <!-- 2. Piedra, papel o tijera -->
+    <div class="juego">
+      <h2>Piedra, Papel o Tijera ✊📄✂️</h2>
+      <button onclick="ppt('piedra')">Piedra</button>
+      <button onclick="ppt('papel')">Papel</button>
+      <button onclick="ppt('tijera')">Tijera</button>
+      <p id="pptResultado"></p>
+    </div>
 
-  <div class="juego" data-nombre="Piedra, papel o tijera">
-    <h2>Piedra, Papel o Tijera ✊📄✂️</h2>
-    <button onclick="ppt('piedra')">Piedra</button>
-    <button onclick="ppt('papel')">Papel</button>
-    <button onclick="ppt('tijera')">Tijera</button>
-    <p id="pptResultado"></p>
-  </div>
+    <!-- 3. Juego de memoria -->
+    <div class="juego">
+      <h2>Juego de memoria 🧠</h2>
+      <button onclick="cargarMemoria()">Reintentar</button>
+      <div class="memory-grid" id="memoryGrid" style="display:grid; grid-template-columns:repeat(4,60px); gap:10px; justify-content:center; margin-top:10px;"></div>
+      <p id="memoryMsg"></p>
+    </div>
 
-  <div class="juego" data-nombre="Juego de memoria">
-    <h2>Juego de memoria 🧠</h2>
-    <button onclick="cargarMemoria()">Reintentar</button>
-    <div class="memory-grid" id="memoryGrid"></div>
-    <p id="memoryMsg"></p>
-  </div>
-
-  <div class="juego" data-nombre="Juego de reacción">
-    <h2>Juego de reacción ⚡</h2>
-    <div id="reactionBox" style="width:200px;height:200px;background:red;margin:auto;border-radius:10px;"></div>
-    <p id="reactionMsg"></p>
-  </div>
+    <!-- 4. Juego de reacción -->
+    <div class="juego">
+      <h2>Juego de reacción ⚡</h2>
+      <div id="reactionBox" style="width:200px;height:200px;background:red;margin:auto;border-radius:10px;"></div>
+      <p id="reactionMsg"></p>
+    </div>
+  </main>
 
   <script>
-    // --- FILTRO BARRA DE BÚSQUEDA ---
-    const busquedaInput = document.getElementById("busqueda");
-    busquedaInput.addEventListener("keyup", function() {
-      const valor = this.value.toLowerCase();
-      document.querySelectorAll(".juego").forEach(juego => {
-        const nombre = juego.dataset.nombre.toLowerCase();
-        juego.style.display = nombre.includes(valor) ? "block" : "none";
-      });
-    });
-
-    // --- Juegos ---
+    // --- Adivina el número ---
     const numeroSecreto = Math.floor(Math.random() * 10) + 1;
     function adivinar() {
       const guess = parseInt(document.getElementById("guess").value);
@@ -71,6 +117,7 @@
       res.textContent = (guess === numeroSecreto) ? "¡Correcto! 🎉" : "Intenta de nuevo...";
     }
 
+    // --- Piedra, papel o tijera ---
     function ppt(jugador) {
       const opciones = ["piedra","papel","tijera"];
       const pc = opciones[Math.floor(Math.random()*3)];
@@ -92,6 +139,16 @@
       mezcladas.forEach((emoji,i)=>{
         const card=document.createElement("div");
         card.className="memory-card hidden";
+        card.style.width="60px";
+        card.style.height="60px";
+        card.style.background="#2196f3";
+        card.style.color="transparent";
+        card.style.display="flex";
+        card.style.alignItems="center";
+        card.style.justifyContent="center";
+        card.style.fontSize="20px";
+        card.style.borderRadius="8px";
+        card.style.cursor="pointer";
         card.textContent=emoji;
         card.dataset.index=i;
         card.onclick=()=>seleccionar(card,emoji);
@@ -101,15 +158,15 @@
     }
 
     function seleccionar(card,emoji){
-      if(!card.classList.contains("hidden")) return;
-      card.classList.remove("hidden");
+      if(card.style.color==="white") return;
+      card.style.color="white";
       seleccionadas.push({card,emoji});
       if(seleccionadas.length===2){
         if(seleccionadas[0].emoji===seleccionadas[1].emoji){
           encontrados++;
           document.getElementById("memoryMsg").textContent="¡Encontraste un par! 🎉";
         } else {
-          setTimeout(()=>{seleccionadas[0].card.classList.add("hidden"); seleccionadas[1].card.classList.add("hidden");},800);
+          setTimeout(()=>{seleccionadas[0].card.style.color="transparent"; seleccionadas[1].card.style.color="transparent";},800);
         }
         seleccionadas=[];
         if(encontrados===emojis.length/2) document.getElementById("memoryMsg").textContent="¡Ganaste el juego de memoria! 🏆";
