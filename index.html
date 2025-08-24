@@ -1,10 +1,45 @@
-index <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Inicio - Aprende Programación</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="estilos.css"> <!-- Aquí irá el nuevo CSS formal -->
+  <link rel="stylesheet" href="estilos.css">
+  <style>
+    /* Estilos adicionales para minijuegos */
+    .game {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      background: #fff9f0;
+      text-align: center;
+    }
+    .game button {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .game button:hover {
+      background-color: #e68900;
+    }
+    .game input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 60%;
+      margin-top: 10px;
+    }
+    .game p {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
@@ -18,7 +53,8 @@ index <!DOCTYPE html>
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
-      <a href="trivia.html">Trivia</a> <!-- 👈 Nuevo botón -->
+      <a href="trivia.html">Trivia</a>
+      <a href="#minijuegos">Minijuegos</a> <!-- Enlace directo -->
     </nav>
     <div class="login-opcional">
       <button id="btn-login-toggle">👤 Iniciar sesión</button>
@@ -46,6 +82,32 @@ index <!DOCTYPE html>
       <h2>💡 ¿Por qué aprender programación?</h2>
       <p>La programación te ayuda a pensar de forma lógica, resolver problemas y crear tus propios proyectos digitales. ¡Es divertido y útil para tu futuro!</p>
     </section>
+
+    <!-- 🔥 NUEVO APARTADO DE MINIJUEGOS -->
+    <section class="tarjeta" id="minijuegos">
+      <h2>🎮 Minijuegos</h2>
+      <p>Practica programación y lógica jugando.</p>
+
+      <!-- Juego 1: Adivina el número -->
+      <div class="game">
+        <h3>🔢 Adivina el número</h3>
+        <p>Piensa un número entre 1 y 10 e intenta adivinarlo.</p>
+        <input type="number" id="guess" placeholder="Escribe tu número">
+        <button onclick="checkNumber()">Probar</button>
+        <p id="result"></p>
+      </div>
+
+      <!-- Juego 2: Quiz rápido -->
+      <div class="game">
+        <h3>❓ Quiz de Programación</h3>
+        <p>¿Qué significa HTML?</p>
+        <button onclick="quizAnswer('a')">A) HyperText Markup Language</button>
+        <button onclick="quizAnswer('b')">B) High Tech Machine Learning</button>
+        <button onclick="quizAnswer('c')">C) Home Tool Markup Level</button>
+        <p id="quizResult"></p>
+      </div>
+
+    </section>
   </main>
 
   <footer class="pie">
@@ -62,14 +124,9 @@ index <!DOCTYPE html>
   </div>
 
   <script>
-    function mostrarPopup() {
-      document.getElementById("popup-login").classList.remove("oculto");
-    }
-
-    function cerrarPopup() {
-      document.getElementById("popup-login").classList.add("oculto");
-    }
-
+    // LOGIN
+    function mostrarPopup() { document.getElementById("popup-login").classList.remove("oculto"); }
+    function cerrarPopup() { document.getElementById("popup-login").classList.add("oculto"); }
     document.getElementById("btn-login-toggle").addEventListener("click", mostrarPopup);
 
     function iniciarSesion() {
@@ -91,20 +148,28 @@ index <!DOCTYPE html>
     function mostrarNombreUsuario() {
       const nombre = localStorage.getItem("nombreSesion");
       const span = document.getElementById("nombre-usuario");
-      if (nombre) {
-        span.textContent = `Hola, ${nombre} 👋`;
-      } else {
-        span.textContent = "";
-      }
+      span.textContent = nombre ? `Hola, ${nombre} 👋` : "";
     }
 
     function revisarSesion() {
-      if (localStorage.getItem("sesionIniciada") === "true") {
-        mostrarNombreUsuario();
-      }
+      if (localStorage.getItem("sesionIniciada") === "true") mostrarNombreUsuario();
+    }
+    revisarSesion();
+
+    // MINIJUEGOS
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
+    function checkNumber() {
+      const guess = document.getElementById("guess").value;
+      const result = document.getElementById("result");
+      result.textContent = guess == secretNumber ? `🎉 ¡Correcto! El número era ${secretNumber}` : "❌ Intenta de nuevo";
     }
 
-    revisarSesion();
+    function quizAnswer(option) {
+      const quizResult = document.getElementById("quizResult");
+      quizResult.textContent = option === "a"
+        ? "✅ ¡Correcto! HTML significa HyperText Markup Language."
+        : "❌ Incorrecto, intenta otra vez.";
+    }
   </script>
 </body>
 </html>
