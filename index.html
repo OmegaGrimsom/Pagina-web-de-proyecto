@@ -5,41 +5,6 @@
   <title>Inicio - Aprende Programación</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="estilos.css">
-  <style>
-    /* Estilos adicionales para minijuegos */
-    .game {
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
-      background: #fff9f0;
-      text-align: center;
-    }
-    .game button {
-      background-color: #ff9800;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      margin: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    .game button:hover {
-      background-color: #e68900;
-    }
-    .game input {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      width: 60%;
-      margin-top: 10px;
-    }
-    .game p {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body>
 
@@ -54,7 +19,7 @@
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
       <a href="trivia.html">Trivia</a>
-      <a href="minijuegos">Minijuegos</a> <!-- Enlace directo -->
+      <a href="minijuegos.html">Minijuegos</a> <!-- Solo el botón -->
     </nav>
     <div class="login-opcional">
       <button id="btn-login-toggle">👤 Iniciar sesión</button>
@@ -82,10 +47,6 @@
       <h2>💡 ¿Por qué aprender programación?</h2>
       <p>La programación te ayuda a pensar de forma lógica, resolver problemas y crear tus propios proyectos digitales. ¡Es divertido y útil para tu futuro!</p>
     </section>
-
-
-
-    </section>
   </main>
 
   <footer class="pie">
@@ -102,9 +63,14 @@
   </div>
 
   <script>
-    // LOGIN
-    function mostrarPopup() { document.getElementById("popup-login").classList.remove("oculto"); }
-    function cerrarPopup() { document.getElementById("popup-login").classList.add("oculto"); }
+    function mostrarPopup() {
+      document.getElementById("popup-login").classList.remove("oculto");
+    }
+
+    function cerrarPopup() {
+      document.getElementById("popup-login").classList.add("oculto");
+    }
+
     document.getElementById("btn-login-toggle").addEventListener("click", mostrarPopup);
 
     function iniciarSesion() {
@@ -126,18 +92,25 @@
     function mostrarNombreUsuario() {
       const nombre = localStorage.getItem("nombreSesion");
       const span = document.getElementById("nombre-usuario");
-      span.textContent = nombre ? `Hola, ${nombre} 👋` : "";
+      if (nombre) {
+        span.textContent = `Hola, ${nombre} 👋`;
+      } else {
+        span.textContent = "";
+      }
     }
 
     function revisarSesion() {
-      if (localStorage.getItem("sesionIniciada") === "true") mostrarNombreUsuario();
+      if (localStorage.getItem("sesionIniciada") === "true") {
+        mostrarNombreUsuario();
+      }
     }
+
     revisarSesion();
-
-
-    }
   </script>
 </body>
 </html>
+
+</html>
+
 
 
