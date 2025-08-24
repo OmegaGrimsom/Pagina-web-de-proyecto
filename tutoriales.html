@@ -1,31 +1,135 @@
-<section id="tutorial-variables" class="tutorial">
-    <h2>📘 Tutorial: Variables en JavaScript</h2>
-    <p>
-        Las variables sirven para guardar información. En JavaScript puedes declararlas con 
-        <code>let</code>, <code>const</code> o <code>var</code>.  
-    </p>
-    <pre><code>let nombre = "Juan";
-console.log("Hola, " + nombre);</code></pre>
-
-    <div class="editor">
-        <textarea id="codeVariables">// Escribe tu código aquí
-let nombre = "Tu Nombre";
-console.log("Hola " + nombre);</textarea>
-        <br>
-        <button onclick="ejecutarCodigo('codeVariables', 'outputVariables')">Probar Código</button>
-        <div class="output" id="outputVariables"></div>
-    </div>
-</section>
-
-<script>
-function ejecutarCodigo(textareaId, outputId) {
-    const code = document.getElementById(textareaId).value;
-    const outputDiv = document.getElementById(outputId);
-    try {
-        const result = eval(code);
-        outputDiv.innerText = result !== undefined ? result : "✔️ Código ejecutado sin errores.";
-    } catch (error) {
-        outputDiv.innerText = "❌ Error: " + error.message;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutoriales - Programación</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4ff;
+      margin: 0;
+      padding: 0;
     }
+    header {
+      background: #4a6cf7;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #3546a7;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+    }
+    .tutorial {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      font-family: monospace;
+      margin-top: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 150px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 10px;
+      background: #4a6cf7;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #3546a7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tutoriales de Programación</h1>
+  </header>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="teoria.html">Teoría</a>
+    <a href="lenguajes.html">Lenguajes</a>
+    <a href="ejercicios.html">Ejercicios</a>
+    <a href="retos.html">Retos</a>
+    <a href="progreso.html">Progreso</a>
+    <a href="minijuegos.html">Minijuegos</a>
+    <a href="tutoriales.html">Tutoriales</a>
+  </nav>
+  <main>
+    <div class="tutorial">
+      <h2>1. Hola Mundo en JavaScript</h2>
+      <p>Escribe tu primer mensaje en la consola del navegador.</p>
+      <textarea id="code1">// Tu código aquí
+console.log("¡Hola Mundo!");</textarea>
+      <button onclick="runCode('code1','output1')">Probar Código</button>
+      <iframe id="output1"></iframe>
+    </div>
+
+    <div class="tutorial">
+      <h2>2. Cambiar el contenido de la página</h2>
+      <p>Haz que el texto de la página cambie al hacer clic en un botón.</p>
+      <textarea id="code2"><button onclick="document.getElementById('demo').innerHTML='Texto cambiado!'">Haz clic aquí</button>
+<p id="demo">Texto original</p></textarea>
+      <button onclick="runCode('code2','output2')">Probar Código</button>
+      <iframe id="output2"></iframe>
+    </div>
+
+    <div class="tutorial">
+      <h2>3. Pequeña calculadora</h2>
+      <p>Crea una mini calculadora que sume dos números.</p>
+      <textarea id="code3">function sumar() {
+  let a = parseInt(document.getElementById('a').value);
+  let b = parseInt(document.getElementById('b').value);
+  document.getElementById('resultado').innerText = "Resultado: " + (a + b);
 }
-</script>
+<input id="a" type="number" placeholder="Número 1">
+<input id="b" type="number" placeholder="Número 2">
+<button onclick="sumar()">Sumar</button>
+<p id="resultado"></p></textarea>
+      <button onclick="runCode('code3','output3')">Probar Código</button>
+      <iframe id="output3"></iframe>
+    </div>
+  </main>
+
+  <script>
+    function runCode(codeId, outputId) {
+      let code = document.getElementById(codeId).value;
+      let iframe = document.getElementById(outputId);
+      iframe.contentDocument.open();
+      iframe.contentDocument.write(code);
+      iframe.contentDocument.close();
+    }
+  </script>
+</body>
+</html>
