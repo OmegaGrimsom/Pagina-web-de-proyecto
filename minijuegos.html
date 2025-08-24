@@ -2,74 +2,28 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Minijuegos de Programación</title>
+  <title>Minijuegos - Aprende Programación</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    .juego {
-      border: 2px solid #4CAF50;
-      border-radius: 10px;
-      padding: 15px;
-      margin: 20px 0;
-      background: #f0f8ff;
-    }
-    button {
-      margin-top: 10px;
-      padding: 8px 12px;
-      cursor: pointer;
-      border: none;
-      border-radius: 6px;
-      background: #4CAF50;
-      color: white;
-      font-weight: bold;
-    }
-    button:hover {
-      background: #45a049;
-    }
-    input, select {
-      padding: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .memory-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 60px);
-      gap: 10px;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    .memory-card {
-      width: 60px;
-      height: 60px;
-      background: #2196f3;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    .hidden {
-      background: #607d8b;
-      color: transparent;
-    }
-    #busqueda {
-      width: 100%;
-      padding: 8px;
-      margin: 15px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
+    body { font-family: Arial, sans-serif; margin:0; padding:20px; background:#f0f8ff; }
+    h1 { text-align:center; color:#4CAF50; }
+    nav { display:flex; justify-content:center; margin-bottom:20px; }
+    nav a { margin:0 10px; text-decoration:none; color:#333; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+    #busqueda { width:80%; padding:8px; margin: 0 auto 20px; display:block; border-radius:5px; border:1px solid #ccc; }
+    .juego { border:2px solid #4CAF50; border-radius:10px; padding:15px; margin:20px 0; background:#e8f5e9; }
+    button { margin-top:10px; padding:8px 12px; cursor:pointer; border:none; border-radius:6px; background:#4CAF50; color:white; font-weight:bold; }
+    button:hover { background:#45a049; }
   </style>
 </head>
 <body>
-  <h1>🎮 Minijuegos de Programación</h1>
 
-  <!-- Barra de búsqueda -->
-  <input type="text" id="busqueda" placeholder="Busca un minijuego..." onkeyup="filtrarJuegos()">
+  <h1>🎮 Minijuegos</h1>
 
-  <!-- 1. Número secreto -->
-  <div class="juego">
+  <input type="text" id="busqueda" placeholder="🔍 Buscar juego...">
+
+  <!-- Juegos -->
+  <div class="juego" data-nombre="Número secreto">
     <h2>Adivina el número 🔢</h2>
     <p>Intenta adivinar un número entre 1 y 10</p>
     <input type="number" id="guess">
@@ -77,8 +31,7 @@
     <p id="resultado"></p>
   </div>
 
-  <!-- 2. Piedra, papel o tijera -->
-  <div class="juego">
+  <div class="juego" data-nombre="Piedra, papel o tijera">
     <h2>Piedra, Papel o Tijera ✊📄✂️</h2>
     <button onclick="ppt('piedra')">Piedra</button>
     <button onclick="ppt('papel')">Papel</button>
@@ -86,95 +39,53 @@
     <p id="pptResultado"></p>
   </div>
 
-  <!-- 3. Juego de memoria -->
-  <div class="juego">
+  <div class="juego" data-nombre="Juego de memoria">
     <h2>Juego de memoria 🧠</h2>
-    <p>Haz clic en dos cartas para encontrar el par.</p>
+    <button onclick="cargarMemoria()">Reintentar</button>
     <div class="memory-grid" id="memoryGrid"></div>
-    <button onclick="reiniciarMemoria()">Reintentar</button>
     <p id="memoryMsg"></p>
   </div>
 
-  <!-- 4. Adivina la función -->
-  <div class="juego">
-    <h2>Adivina la función 💻</h2>
-    <p>Selecciona cuál de estas funciones imprime "Hola Mundo" en consola:</p>
-    <button onclick="adivinaFuncion('a')">function saludo(){ return 'Hola Mundo'; }</button>
-    <button onclick="adivinaFuncion('b')">function saludo(){ console.log('Hola Mundo'); }</button>
-    <button onclick="adivinaFuncion('c')">console.alert('Hola Mundo');</button>
-    <p id="funcionMsg"></p>
-  </div>
-
-  <!-- 5. Juego de reacción -->
-  <div class="juego">
+  <div class="juego" data-nombre="Juego de reacción">
     <h2>Juego de reacción ⚡</h2>
-    <p>Espera a que el cuadro se ponga <b>verde</b> y haz clic lo más rápido posible.</p>
     <div id="reactionBox" style="width:200px;height:200px;background:red;margin:auto;border-radius:10px;"></div>
     <p id="reactionMsg"></p>
   </div>
 
-  <!-- 6. Completa el código -->
-  <div class="juego">
-    <h2>Completa el código 📝</h2>
-    <p>Llena la parte que falta en el código para que funcione:</p>
-    <p><code>console.log(____);</code></p>
-    <input type="text" id="completaInput" placeholder="Escribe la respuesta">
-    <button onclick="completaCodigo()">Probar</button>
-    <p id="completaMsg"></p>
-  </div>
-
-  <!-- 7. Encuentra el error -->
-  <div class="juego">
-    <h2>Encuentra el error 🐞</h2>
-    <p>Detecta el error en este código:</p>
-    <pre>for(let i=0; i<5 i++){ console.log(i); }</pre>
-    <input type="text" id="debugInput" placeholder="Qué falta o está mal?">
-    <button onclick="debugCodigo()">Probar</button>
-    <p id="debugMsg"></p>
-  </div>
-
   <script>
-    // --- Filtrar juegos ---
-    function filtrarJuegos(){
-      const busqueda = document.getElementById("busqueda").value.toLowerCase();
-      const juegos = document.querySelectorAll(".juego");
-      juegos.forEach(j => {
-        if(j.textContent.toLowerCase().includes(busqueda)){
-          j.style.display = "block";
-        } else {
-          j.style.display = "none";
-        }
+    // --- FILTRO BARRA DE BÚSQUEDA ---
+    const busquedaInput = document.getElementById("busqueda");
+    busquedaInput.addEventListener("keyup", function() {
+      const valor = this.value.toLowerCase();
+      document.querySelectorAll(".juego").forEach(juego => {
+        const nombre = juego.dataset.nombre.toLowerCase();
+        juego.style.display = nombre.includes(valor) ? "block" : "none";
       });
-    }
+    });
 
-    // --- Adivina el número ---
-    const numeroSecreto = Math.floor(Math.random()*10)+1;
-    function adivinar(){
+    // --- Juegos ---
+    const numeroSecreto = Math.floor(Math.random() * 10) + 1;
+    function adivinar() {
       const guess = parseInt(document.getElementById("guess").value);
       const res = document.getElementById("resultado");
-      if(guess===numeroSecreto) res.textContent="¡Correcto! 🎉";
-      else res.textContent="Intenta de nuevo...";
+      res.textContent = (guess === numeroSecreto) ? "¡Correcto! 🎉" : "Intenta de nuevo...";
     }
 
-    // --- Piedra, papel o tijera ---
-    function ppt(jugador){
-      const opciones=["piedra","papel","tijera"];
-      const pc=opciones[Math.floor(Math.random()*3)];
-      let resultado="";
+    function ppt(jugador) {
+      const opciones = ["piedra","papel","tijera"];
+      const pc = opciones[Math.floor(Math.random()*3)];
+      let resultado = "";
       if(jugador===pc) resultado="Empate 😐";
-      else if(
-        (jugador==="piedra" && pc==="tijera") ||
-        (jugador==="papel" && pc==="piedra") ||
-        (jugador==="tijera" && pc==="papel")
-      ) resultado="¡Ganaste! 🎉";
+      else if((jugador==="piedra" && pc==="tijera")||(jugador==="papel" && pc==="piedra")||(jugador==="tijera" && pc==="papel")) resultado="¡Ganaste! 🎉";
       else resultado="Perdiste 😢";
-      document.getElementById("pptResultado").textContent="Tú: "+jugador+" | PC: "+pc+" → "+resultado;
+      document.getElementById("pptResultado").textContent = `Tú: ${jugador} | PC: ${pc} → ${resultado}`;
     }
 
     // --- Juego de memoria ---
     const emojis=["😀","🐱","🚗","🍎","😀","🐱","🚗","🍎"];
     let seleccionadas=[], encontrados=0;
     function cargarMemoria(){
+      seleccionadas=[]; encontrados=0;
       const grid=document.getElementById("memoryGrid");
       grid.innerHTML="";
       const mezcladas=emojis.sort(()=>0.5-Math.random());
@@ -186,9 +97,9 @@
         card.onclick=()=>seleccionar(card,emoji);
         grid.appendChild(card);
       });
-      seleccionadas=[]; encontrados=0;
       document.getElementById("memoryMsg").textContent="";
     }
+
     function seleccionar(card,emoji){
       if(!card.classList.contains("hidden")) return;
       card.classList.remove("hidden");
@@ -197,27 +108,15 @@
         if(seleccionadas[0].emoji===seleccionadas[1].emoji){
           encontrados++;
           document.getElementById("memoryMsg").textContent="¡Encontraste un par! 🎉";
-        }else{
-          setTimeout(()=>{
-            seleccionadas[0].card.classList.add("hidden");
-            seleccionadas[1].card.classList.add("hidden");
-          },800);
+        } else {
+          setTimeout(()=>{seleccionadas[0].card.classList.add("hidden"); seleccionadas[1].card.classList.add("hidden");},800);
         }
         seleccionadas=[];
-        if(encontrados===emojis.length/2){
-          document.getElementById("memoryMsg").textContent="¡Ganaste el juego de memoria! 🏆";
-        }
+        if(encontrados===emojis.length/2) document.getElementById("memoryMsg").textContent="¡Ganaste el juego de memoria! 🏆";
       }
     }
-    function reiniciarMemoria(){ cargarMemoria(); }
-    cargarMemoria();
 
-    // --- Adivina la función ---
-    function adivinaFuncion(opcion){
-      const msg=document.getElementById("funcionMsg");
-      if(opcion==="b") msg.textContent="¡Correcto! 🎉";
-      else msg.textContent="Incorrecto ❌. Intenta de nuevo.";
-    }
+    cargarMemoria();
 
     // --- Juego de reacción ---
     const reactionBox=document.getElementById("reactionBox");
@@ -225,7 +124,7 @@
     reactionBox.addEventListener("click", ()=>{
       if(reactionBox.style.background==="green"){
         const tiempo=(Date.now()-startTime)/1000;
-        document.getElementById("reactionMsg").textContent="¡Tu tiempo fue: "+tiempo+"s ⚡!";
+        document.getElementById("reactionMsg").textContent=`¡Tu tiempo fue: ${tiempo}s ⚡!`;
         reactionBox.style.background="red";
         setTimeout(start,2000);
       }
@@ -240,22 +139,7 @@
       },delay);
     }
     start();
-
-    // --- Completa el código ---
-    function completaCodigo(){
-      const respuesta=document.getElementById("completaInput").value.trim().toLowerCase();
-      const msg=document.getElementById("completaMsg");
-      if(respuesta==="hola mundo" || respuesta==="'hola mundo'" || respuesta==='"hola mundo"') msg.textContent="¡Correcto! 🎉";
-      else msg.textContent="Intenta de nuevo...";
-    }
-
-    // --- Encuentra el error ---
-    function debugCodigo(){
-      const respuesta=document.getElementById("debugInput").value.toLowerCase().trim();
-      const msg=document.getElementById("debugMsg");
-      if(respuesta.includes("falta") || respuesta.includes("paréntesis") || respuesta.includes("error")) msg.textContent="¡Correcto! 🎉 El error era un paréntesis faltante.";
-      else msg.textContent="Intenta de nuevo...";
-    }
   </script>
+
 </body>
 </html>
