@@ -83,29 +83,7 @@
       <p>La programación te ayuda a pensar de forma lógica, resolver problemas y crear tus propios proyectos digitales. ¡Es divertido y útil para tu futuro!</p>
     </section>
 
-    <!-- 🔥 NUEVO APARTADO DE MINIJUEGOS -->
-    <section class="tarjeta" id="minijuegos">
-      <h2>🎮 Minijuegos</h2>
-      <p>Practica programación y lógica jugando.</p>
 
-      <!-- Juego 1: Adivina el número -->
-      <div class="game">
-        <h3>🔢 Adivina el número</h3>
-        <p>Piensa un número entre 1 y 10 e intenta adivinarlo.</p>
-        <input type="number" id="guess" placeholder="Escribe tu número">
-        <button onclick="checkNumber()">Probar</button>
-        <p id="result"></p>
-      </div>
-
-      <!-- Juego 2: Quiz rápido -->
-      <div class="game">
-        <h3>❓ Quiz de Programación</h3>
-        <p>¿Qué significa HTML?</p>
-        <button onclick="quizAnswer('a')">A) HyperText Markup Language</button>
-        <button onclick="quizAnswer('b')">B) High Tech Machine Learning</button>
-        <button onclick="quizAnswer('c')">C) Home Tool Markup Level</button>
-        <p id="quizResult"></p>
-      </div>
 
     </section>
   </main>
@@ -156,21 +134,10 @@
     }
     revisarSesion();
 
-    // MINIJUEGOS
-    let secretNumber = Math.floor(Math.random() * 10) + 1;
-    function checkNumber() {
-      const guess = document.getElementById("guess").value;
-      const result = document.getElementById("result");
-      result.textContent = guess == secretNumber ? `🎉 ¡Correcto! El número era ${secretNumber}` : "❌ Intenta de nuevo";
-    }
 
-    function quizAnswer(option) {
-      const quizResult = document.getElementById("quizResult");
-      quizResult.textContent = option === "a"
-        ? "✅ ¡Correcto! HTML significa HyperText Markup Language."
-        : "❌ Incorrecto, intenta otra vez.";
     }
   </script>
 </body>
 </html>
+
 
