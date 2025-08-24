@@ -38,9 +38,20 @@
     .tutorial {
       background: white;
       padding: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .tutorial h2 {
+      margin: 0;
+      cursor: pointer;
+      background: #e4e8ff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .contenido {
+      display: none;
+      margin-top: 10px;
     }
     textarea {
       width: 100%;
@@ -87,28 +98,37 @@
     <a href="tutoriales.html">Tutoriales</a>
   </nav>
   <main>
+    
+    <!-- Tutorial 1 -->
     <div class="tutorial">
-      <h2>1. Hola Mundo en JavaScript</h2>
-      <p>Escribe tu primer mensaje en la consola del navegador.</p>
-      <textarea id="code1">// Tu código aquí
+      <h2 onclick="toggleTutorial(this)">1. Hola Mundo en JavaScript</h2>
+      <div class="contenido">
+        <p>Escribe tu primer mensaje en la consola del navegador.</p>
+        <textarea id="code1">// Tu código aquí
 console.log("¡Hola Mundo!");</textarea>
-      <button onclick="runCode('code1','output1')">Probar Código</button>
-      <iframe id="output1"></iframe>
+        <button onclick="runCode('code1','output1')">Probar Código</button>
+        <iframe id="output1"></iframe>
+      </div>
     </div>
 
+    <!-- Tutorial 2 -->
     <div class="tutorial">
-      <h2>2. Cambiar el contenido de la página</h2>
-      <p>Haz que el texto de la página cambie al hacer clic en un botón.</p>
-      <textarea id="code2"><button onclick="document.getElementById('demo').innerHTML='Texto cambiado!'">Haz clic aquí</button>
+      <h2 onclick="toggleTutorial(this)">2. Cambiar el contenido de la página</h2>
+      <div class="contenido">
+        <p>Haz que el texto de la página cambie al hacer clic en un botón.</p>
+        <textarea id="code2"><button onclick="document.getElementById('demo').innerHTML='Texto cambiado!'">Haz clic aquí</button>
 <p id="demo">Texto original</p></textarea>
-      <button onclick="runCode('code2','output2')">Probar Código</button>
-      <iframe id="output2"></iframe>
+        <button onclick="runCode('code2','output2')">Probar Código</button>
+        <iframe id="output2"></iframe>
+      </div>
     </div>
 
+    <!-- Tutorial 3 -->
     <div class="tutorial">
-      <h2>3. Pequeña calculadora</h2>
-      <p>Crea una mini calculadora que sume dos números.</p>
-      <textarea id="code3">function sumar() {
+      <h2 onclick="toggleTutorial(this)">3. Mini Calculadora</h2>
+      <div class="contenido">
+        <p>Crea una mini calculadora que sume dos números.</p>
+        <textarea id="code3">function sumar() {
   let a = parseInt(document.getElementById('a').value);
   let b = parseInt(document.getElementById('b').value);
   document.getElementById('resultado').innerText = "Resultado: " + (a + b);
@@ -117,9 +137,40 @@ console.log("¡Hola Mundo!");</textarea>
 <input id="b" type="number" placeholder="Número 2">
 <button onclick="sumar()">Sumar</button>
 <p id="resultado"></p></textarea>
-      <button onclick="runCode('code3','output3')">Probar Código</button>
-      <iframe id="output3"></iframe>
+        <button onclick="runCode('code3','output3')">Probar Código</button>
+        <iframe id="output3"></iframe>
+      </div>
     </div>
+
+    <!-- Tutorial 4 -->
+    <div class="tutorial">
+      <h2 onclick="toggleTutorial(this)">4. Condicionales</h2>
+      <div class="contenido">
+        <p>Aprende a usar <code>if</code> y <code>else</code>.</p>
+        <textarea id="code4">let edad = 18;
+if (edad >= 18) {
+  document.write("Eres mayor de edad ✅");
+} else {
+  document.write("Eres menor de edad ❌");
+}</textarea>
+        <button onclick="runCode('code4','output4')">Probar Código</button>
+        <iframe id="output4"></iframe>
+      </div>
+    </div>
+
+    <!-- Tutorial 5 -->
+    <div class="tutorial">
+      <h2 onclick="toggleTutorial(this)">5. Bucle For</h2>
+      <div class="contenido">
+        <p>Usa un bucle para mostrar números del 1 al 5.</p>
+        <textarea id="code5">for (let i = 1; i <= 5; i++) {
+  document.write("Número: " + i + "<br>");
+}</textarea>
+        <button onclick="runCode('code5','output5')">Probar Código</button>
+        <iframe id="output5"></iframe>
+      </div>
+    </div>
+
   </main>
 
   <script>
@@ -129,6 +180,11 @@ console.log("¡Hola Mundo!");</textarea>
       iframe.contentDocument.open();
       iframe.contentDocument.write(code);
       iframe.contentDocument.close();
+    }
+
+    function toggleTutorial(element) {
+      const content = element.nextElementSibling;
+      content.style.display = (content.style.display === "block") ? "none" : "block";
     }
   </script>
 </body>
