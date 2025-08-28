@@ -3,55 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <title>Retos - Aprende Programación</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="estilos.css">
   <style>
-    .ayuda {
-      color: #d35400;
-      margin-top: 5px;
-      background: #fff3e6;
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px dashed #d35400;
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #4a90e2;
+      padding: 15px;
+      color: white;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+    }
+    .reto {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
     }
     textarea {
       width: 100%;
-      height: 220px; /* más grande */
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      padding: 10px;
+      height: 200px;
       font-family: monospace;
-      font-size: 15px;
+      font-size: 14px;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
       resize: vertical;
     }
     iframe {
       width: 100%;
-      height: 140px;
+      height: 150px;
       border: 1px solid #ccc;
-      border-radius: 8px;
       margin-top: 10px;
-      background: #fff;
+      border-radius: 6px;
+      background: #f9f9f9;
     }
     button {
-      margin: 5px 5px 5px 0;
-      padding: 8px 12px;
+      margin: 5px;
+      padding: 10px 15px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
-      background: #4a6cf7;
-      color: #fff;
     }
-    button:hover {
-      background: #3546a7;
+    .ejecutar {
+      background: #4caf50;
+      color: white;
+    }
+    .ayuda {
+      background: #ff9800;
+      color: white;
     }
   </style>
 </head>
 <body>
-
-  <header class="encabezado">
-    <h1>🏆 Retos</h1>
-    <nav class="navegacion">
+  <header>
+    <h1>Retos de Programación</h1>
+    <nav>
       <a href="index.html">Inicio</a>
       <a href="teoria.html">Teoría</a>
       <a href="lenguajes.html">Lenguajes</a>
@@ -59,166 +87,64 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
-      <a href="trivia.html">Trivia</a>
+      <a href="manual.html">Manual</a>
+      <a href="perfil.html">Mi Perfil</a>
     </nav>
   </header>
 
-  <main class="contenido-principal">
+  <div class="container">
+    <h2>Resuelve los siguientes retos:</h2>
 
     <!-- Reto 1 -->
-    <section class="tarjeta">
-      <h2>🔍 Reto 1: Inversión de texto</h2>
-      <p>Escribe un programa que invierta el texto ingresado por el usuario.</p>
-      <textarea id="reto1">// Ejemplo de inicio
-let texto = "Hola";
-console.log(texto.split("").reverse().join("")); </textarea>
-      <br>
-      <button onclick="ejecutarCodigo('reto1','salida1')">▶ Ejecutar código</button>
-      <button onclick="marcarReto(1)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(1)">🛈 Ayuda</button>
-      <p id="ayuda1" class="ayuda" style="display:none;">
-        💡 Consejo: Usa <code>.split("")</code> para convertir un string en arreglo,
-        luego <code>.reverse()</code> y finalmente <code>.join("")</code>.  
-        <br><b>Ejemplo:</b> "Hola" → ["H","o","l","a"] → ["a","l","o","H"] → "aloH"
-      </p>
+    <div class="reto">
+      <h3>Reto 1: Imprime "Hola mundo" en la pantalla</h3>
+      <textarea id="codigo1" placeholder="Escribe aquí tu código..."></textarea><br>
+      <button class="ejecutar" onclick="ejecutarCodigo('codigo1','salida1')">Ejecutar código</button>
+      <button class="ayuda" onclick="mostrarAyuda(1)">Ayuda</button>
       <iframe id="salida1"></iframe>
-    </section>
+    </div>
 
     <!-- Reto 2 -->
-    <section class="tarjeta">
-      <h2>🧮 Reto 2: Suma de los primeros 100 números</h2>
-      <p>Escribe un programa que calcule la suma de los números del 1 al 100.</p>
-      <textarea id="reto2">let suma = 0;
-for(let i=1;i<=100;i++){ suma+=i; }
-console.log("La suma es: "+suma);</textarea>
-      <br>
-      <button onclick="ejecutarCodigo('reto2','salida2')">▶ Ejecutar código</button>
-      <button onclick="marcarReto(2)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(2)">🛈 Ayuda</button>
-      <p id="ayuda2" class="ayuda" style="display:none;">
-        💡 Usa un bucle <code>for</code> que recorra del 1 al 100 y ve acumulando en una variable.  
-        <br><b>Tip:</b> Inicializa la suma en <code>0</code>.
-      </p>
+    <div class="reto">
+      <h3>Reto 2: Crea una variable llamada <code>edad</code> y muestra su valor</h3>
+      <textarea id="codigo2" placeholder="Escribe aquí tu código..."></textarea><br>
+      <button class="ejecutar" onclick="ejecutarCodigo('codigo2','salida2')">Ejecutar código</button>
+      <button class="ayuda" onclick="mostrarAyuda(2)">Ayuda</button>
       <iframe id="salida2"></iframe>
-    </section>
+    </div>
 
     <!-- Reto 3 -->
-    <section class="tarjeta">
-      <h2>🔢 Reto 3: Números primos</h2>
-      <p>Escribe una función que diga si un número es primo o no.</p>
-      <textarea id="reto3">function esPrimo(n){
-  if(n<=1) return false;
-  for(let i=2;i<n;i++){
-    if(n%i===0) return false;
-  }
-  return true;
-}
-console.log(esPrimo(7));</textarea>
-      <br>
-      <button onclick="ejecutarCodigo('reto3','salida3')">▶ Ejecutar código</button>
-      <button onclick="marcarReto(3)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(3)">🛈 Ayuda</button>
-      <p id="ayuda3" class="ayuda" style="display:none;">
-        💡 Un número primo solo tiene 2 divisores: 1 y él mismo.  
-        <br><b>Ejemplo:</b> 7 es primo, 8 no lo es porque es divisible entre 2 y 4.
-      </p>
+    <div class="reto">
+      <h3>Reto 3: Usa un bucle para contar del 1 al 5</h3>
+      <textarea id="codigo3" placeholder="Escribe aquí tu código..."></textarea><br>
+      <button class="ejecutar" onclick="ejecutarCodigo('codigo3','salida3')">Ejecutar código</button>
+      <button class="ayuda" onclick="mostrarAyuda(3)">Ayuda</button>
       <iframe id="salida3"></iframe>
-    </section>
-
-    <!-- Reto 4 -->
-    <section class="tarjeta">
-      <h2>📦 Reto 4: Arreglo al revés</h2>
-      <p>Crea un arreglo y luego genera uno nuevo con los elementos en orden inverso.</p>
-      <textarea id="reto4">let arr = [1,2,3,4,5];
-console.log(arr.reverse());</textarea>
-      <br>
-      <button onclick="ejecutarCodigo('reto4','salida4')">▶ Ejecutar código</button>
-      <button onclick="marcarReto(4)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(4)">🛈 Ayuda</button>
-      <p id="ayuda4" class="ayuda" style="display:none;">
-        💡 Intenta usar <code>.reverse()</code>, o haz un bucle desde el último índice hasta el primero.
-      </p>
-      <iframe id="salida4"></iframe>
-    </section>
-
-    <!-- Reto 5 -->
-    <section class="tarjeta">
-      <h2>📆 Reto 5: Edad exacta</h2>
-      <p>Pide al usuario su año de nacimiento y muestra cuántos años tiene.</p>
-      <textarea id="reto5">let nacimiento = 2000;
-let actual = new Date().getFullYear();
-console.log("Tienes " + (actual-nacimiento) + " años");</textarea>
-      <br>
-      <button onclick="ejecutarCodigo('reto5','salida5')">▶ Ejecutar código</button>
-      <button onclick="marcarReto(5)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(5)">🛈 Ayuda</button>
-      <p id="ayuda5" class="ayuda" style="display:none;">
-        💡 Obtén el año actual con <code>new Date().getFullYear()</code> y réstalo con el año de nacimiento.
-      </p>
-      <iframe id="salida5"></iframe>
-    </section>
-
-  </main>
-
-  <footer class="pie">
-    <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
-  </footer>
+    </div>
+  </div>
 
   <script>
-    const usuario = localStorage.getItem("usuarioActual");
-
-    function ejecutarCodigo(textareaId, salidaId) {
-      const code = document.getElementById(textareaId).value;
-      const iframe = document.getElementById(salidaId);
-      const doc = iframe.contentDocument || iframe.contentWindow.document;
-      doc.open();
-      doc.write(`<script>${code}<\/script>`);
-      doc.close();
+    // Función para ejecutar el código dentro del iframe
+    function ejecutarCodigo(idTextarea, idSalida) {
+      const codigo = document.getElementById(idTextarea).value;
+      const salida = document.getElementById(idSalida).contentWindow.document;
+      salida.open();
+      salida.write(codigo);
+      salida.close();
     }
 
-    function marcarReto(numero) {
-      const clave = usuario ? `${usuario}_reto${numero}` : `reto${numero}`;
-      localStorage.setItem(clave, "true");
-      alert(`✅ ¡Reto ${numero} marcado como completado!`);
-      actualizarRango();
-    }
-
-    function mostrarAyuda(numReto) {
-      const ayuda = document.getElementById(`ayuda${numReto}`);
-      ayuda.style.display = ayuda.style.display === "none" ? "block" : "none";
-    }
-
-    function obtenerProgreso(clave, total) {
-      let completados = 0;
-      for (let i = 1; i <= total; i++) {
-        const claveGuardada = usuario ? `${usuario}_${clave}${i}` : `${clave}${i}`;
-        if (localStorage.getItem(claveGuardada) === "true") completados++;
+    // Función para mostrar ayudas
+    function mostrarAyuda(num) {
+      let mensaje = "";
+      if (num === 1) {
+        mensaje = "Pista: Puedes usar document.write('Hola mundo');";
+      } else if (num === 2) {
+        mensaje = "Pista: Usa var, let o const para crear la variable. Ejemplo: let edad = 15;";
+      } else if (num === 3) {
+        mensaje = "Pista: Usa un bucle for. Ejemplo: for(let i=1; i<=5; i++){ document.write(i); }";
       }
-      return completados;
+      alert(mensaje);
     }
-
-    function actualizarRango() {
-      const ejerciciosTotales = 7;
-      const retosTotales = 5;
-      const triviaTotales = 10;
-
-      const ejerciciosCompletados = obtenerProgreso("ejercicio", ejerciciosTotales);
-      const retosCompletados = obtenerProgreso("reto", retosTotales);
-      const triviaCompletada = obtenerProgreso("trivia", triviaTotales);
-
-      const total = ejerciciosCompletados + retosCompletados + triviaCompletada;
-
-      let rango = "Principiante";
-      if (total >= 5) rango = "Aprendiz";
-      if (total >= 10) rango = "Intermedio";
-      if (total >= 15) rango = "Avanzado";
-      if (total >= 20) rango = "¡Maestro! 🎉";
-
-      console.log(`Tu rango actual: ${rango}`);
-    }
-
-    actualizarRango();
   </script>
-
 </body>
 </html>
