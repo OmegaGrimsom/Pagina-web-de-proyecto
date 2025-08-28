@@ -1,22 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Retos - Aprende Programación</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    .ayuda {
-      color: #d35400;
-      margin-top: 5px;
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .reto {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    textarea {
+      width: 100%;
+      height: 200px; /* más grande que antes */
+      font-family: monospace;
+      font-size: 14px;
+      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .output {
+      background: #eee;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      font-family: monospace;
     }
   </style>
 </head>
 <body>
-
-  <header class="encabezado">
-    <h1>🏆 Retos</h1>
-    <nav class="navegacion">
+  <header>
+    <h1>Retos de Programación</h1>
+    <nav>
       <a href="index.html">Inicio</a>
       <a href="teoria.html">Teoría</a>
       <a href="lenguajes.html">Lenguajes</a>
@@ -24,119 +78,43 @@
       <a href="retos.html">Retos</a>
       <a href="progreso.html">Progreso</a>
       <a href="tutoriales.html">Tutoriales</a>
-      <a href="trivia.html">Trivia</a>
+      <a href="minijuegos.html">Minijuegos</a>
+      <a href="perfil.html">Mi Perfil</a>
     </nav>
   </header>
 
-  <main class="contenido-principal">
+  <div class="container">
+    <div class="reto">
+      <h2>Reto 1: Invertir un texto</h2>
+      <p>Escribe un programa que reciba un texto y lo muestre al revés.</p>
+      <textarea id="codigo1">// Escribe tu código aquí</textarea>
+      <br>
+      <button onclick="ejecutarCodigo('codigo1','salida1')">Ejecutar código</button>
+      <div class="output" id="salida1"></div>
+    </div>
 
-    <section class="tarjeta">
-      <h2>🔍 Reto 1: Inversión de texto</h2>
-      <p>Escribe un programa que invierta el texto ingresado por el usuario.</p>
-      <textarea id="reto1" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarReto(1)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(1)">🛈 Ayuda</button>
-      <p id="ayuda1" class="ayuda" style="display:none;">
-        Piensa en cómo puedes recorrer la cadena desde el final hacia el inicio.
-      </p>
-    </section>
-
-    <section class="tarjeta">
-      <h2>🧮 Reto 2: Suma de los primeros 100 números</h2>
-      <p>Escribe un programa que calcule la suma de los números del 1 al 100.</p>
-      <textarea id="reto2" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarReto(2)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(2)">🛈 Ayuda</button>
-      <p id="ayuda2" class="ayuda" style="display:none;">
-        Usa un bucle para ir sumando los números desde 1 hasta 100.
-      </p>
-    </section>
-
-    <section class="tarjeta">
-      <h2>🔢 Reto 3: Números primos</h2>
-      <p>Escribe una función que diga si un número es primo o no.</p>
-      <textarea id="reto3" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarReto(3)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(3)">🛈 Ayuda</button>
-      <p id="ayuda3" class="ayuda" style="display:none;">
-        Un número es primo si solo es divisible por 1 y por sí mismo.
-      </p>
-    </section>
-
-    <section class="tarjeta">
-      <h2>📦 Reto 4: Arreglo al revés</h2>
-      <p>Crea un arreglo y luego genera uno nuevo con los elementos en orden inverso.</p>
-      <textarea id="reto4" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarReto(4)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(4)">🛈 Ayuda</button>
-      <p id="ayuda4" class="ayuda" style="display:none;">
-        Piensa en usar un bucle que recorra el arreglo desde el último elemento hasta el primero.
-      </p>
-    </section>
-
-    <section class="tarjeta">
-      <h2>📆 Reto 5: Edad exacta</h2>
-      <p>Pide al usuario su año de nacimiento y muestra cuántos años tiene.</p>
-      <textarea id="reto5" placeholder="Escribe tu código aquí..."></textarea>
-      <button onclick="marcarReto(5)">Marcar como completado</button>
-      <button onclick="mostrarAyuda(5)">🛈 Ayuda</button>
-      <p id="ayuda5" class="ayuda" style="display:none;">
-        Obtén el año actual con <code>new Date().getFullYear()</code> y réstale el año de nacimiento.
-      </p>
-    </section>
-
-  </main>
-
-  <footer class="pie">
-    <p>&copy; 2025 Aprende Programación - Hecho con ❤️ para estudiantes de secundaria.</p>
-  </footer>
+    <div class="reto">
+      <h2>Reto 2: Contar vocales</h2>
+      <p>Escribe un programa que cuente cuántas vocales tiene una palabra.</p>
+      <textarea id="codigo2">// Escribe tu código aquí</textarea>
+      <br>
+      <button onclick="ejecutarCodigo('codigo2','salida2')">Ejecutar código</button>
+      <div class="output" id="salida2"></div>
+    </div>
+  </div>
 
   <script>
-    const usuario = localStorage.getItem("usuarioActual");
+    function ejecutarCodigo(textareaId, salidaId) {
+      const codigo = document.getElementById(textareaId).value;
+      const salida = document.getElementById(salidaId);
 
-    function marcarReto(numero) {
-      const clave = usuario ? `${usuario}_reto${numero}` : `reto${numero}`;
-      localStorage.setItem(clave, "true");
-      alert(`✅ ¡Reto ${numero} marcado como completado!`);
-      actualizarRango();
-    }
-
-    function mostrarAyuda(numReto) {
-      const ayuda = document.getElementById(`ayuda${numReto}`);
-      ayuda.style.display = ayuda.style.display === "none" ? "block" : "none";
-    }
-
-    function obtenerProgreso(clave, total) {
-      let completados = 0;
-      for (let i = 1; i <= total; i++) {
-        const claveGuardada = usuario ? `${usuario}_${clave}${i}` : `${clave}${i}`;
-        if (localStorage.getItem(claveGuardada) === "true") completados++;
+      try {
+        const resultado = eval(codigo);
+        salida.innerText = resultado !== undefined ? resultado : "Código ejecutado correctamente.";
+      } catch (error) {
+        salida.innerText = "⚠️ Error: " + error.message;
       }
-      return completados;
     }
-
-    function actualizarRango() {
-      const ejerciciosTotales = 7; // ajusta según tus ejercicios
-      const retosTotales = 5;
-      const triviaTotales = 10;
-
-      const ejerciciosCompletados = obtenerProgreso("ejercicio", ejerciciosTotales);
-      const retosCompletados = obtenerProgreso("reto", retosTotales);
-      const triviaCompletada = obtenerProgreso("trivia", triviaTotales);
-
-      const total = ejerciciosCompletados + retosCompletados + triviaCompletada;
-
-      let rango = "Principiante";
-      if (total >= 5) rango = "Aprendiz";
-      if (total >= 10) rango = "Intermedio";
-      if (total >= 15) rango = "Avanzado";
-      if (total >= 20) rango = "¡Maestro! 🎉";
-
-      console.log(`Tu rango actual: ${rango}`);
-    }
-
-    actualizarRango();
   </script>
-
 </body>
 </html>
